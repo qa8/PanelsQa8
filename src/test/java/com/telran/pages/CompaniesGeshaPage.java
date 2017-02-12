@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by G_Lab on 2/11/2017.
  */
-public class CompaniesGennadyPage extends Page {
+public class CompaniesGeshaPage extends Page {
 
     @FindBy(how = How.TAG_NAME, using = "h1")
     @CacheLookup
@@ -32,7 +32,7 @@ public class CompaniesGennadyPage extends Page {
     WebElement quitButton;
 
 
-    public CompaniesGennadyPage(WebDriver driver) {
+    public CompaniesGeshaPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
