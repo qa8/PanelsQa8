@@ -7,35 +7,65 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
-
 /**
  * Sample page
  */
-public class LoginPage extends Page {
+class LoginPage extends Page {
 
   @FindBy(how = How.TAG_NAME, using = "h1")
+  @CacheLookup
   public WebElement header;
-
   @FindBy(id = "login")
   WebElement loginField;
 
   @FindBy(id = "pass")
-  WebElement passwordField;
+  WebElement PassField;
 
   @FindBy(id = "button")
-  WebElement loginButton;
+  WebElement button;
+
+  @FindBy(id = "managementList")
+  WebElement managementList;
+
+  @FindBy(id = "surveysList")
+  WebElement surveysList;
+
+  @FindBy(id = "reportsList")
+  WebElement reportsListt;
+
+  @FindBy(id = "quit")
+  WebElement LogOut;
+
+
 
   public LoginPage(WebDriver driver) {
-    super(driver);
+    super(driver);//наследуем от супер-класса
     PageFactory.initElements(driver, this);
+
   }
 
-  //methods
-  public void fillLoginField (String text){
-setElementText(loginField,text);
+  //metods
+  public void Yuriyloginfield(String test) {
+    setElementText(loginField, test);
   }
 
-  public void clickOnLoginButton (){
-    clickElement(loginButton);
+  public void Yuriypasswordfield(String test) {
+    setElementText(PassField, test);
   }
+
+  public void YuriypressButton() {
+    clickElement(button);
+  }
+
+  public void YuriyExpandManagementList() {
+    clickElement(managementList);
+  }
+
+  public void YuriyTurnManagementList() {
+    clickElement(managementList);
+  }
+
+
+
+
 }
