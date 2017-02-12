@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Sample page
  */
-public class MarinaLoginPage extends Page {
+public class LoginMarinaPage extends Page {
 
     @FindBy(how = How.TAG_NAME, using = "h1")
 
@@ -23,7 +23,7 @@ public class MarinaLoginPage extends Page {
     @FindBy(id = "button")
     WebElement loginButton;
 
-    public MarinaLoginPage(WebDriver driver) {
+    public LoginMarinaPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
