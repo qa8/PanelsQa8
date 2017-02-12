@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Sample page
  */
-class LoginPage extends Page {
+class LoginIakovPage extends Page {
 
   @FindBy(how = How.TAG_NAME, using = "h1")
   @CacheLookup
@@ -37,8 +37,7 @@ class LoginPage extends Page {
   WebElement LogOut;
 
 
-
-  public LoginPage(WebDriver driver) {
+  public LoginIakovPage(WebDriver driver) {
     super(driver);//наследуем от супер-класса
     PageFactory.initElements(driver, this);
 
