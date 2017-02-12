@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Sample page
  */
-public class MainStasPage extends Page {
+public class MainStasPagee extends Page {
 
   @FindBy(how = How.TAG_NAME, using = "h1")
   @CacheLookup
@@ -25,7 +25,7 @@ public class MainStasPage extends Page {
   @FindBy(id="button")
   public WebElement loginButton;
 
-  public MainStasPage(WebDriver driver) {
+  public MainStasPagee(WebDriver driver) {
     super(driver);
     PageFactory.initElements(driver, this);
   }
