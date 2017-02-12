@@ -16,6 +16,7 @@ public class Companies_RishaPage extends LoginPage {
     @CacheLookup
     public WebElement header;
 
+
     @FindBy(id = "managementList")
     WebElement managemenButton;
 
