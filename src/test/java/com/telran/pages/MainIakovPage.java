@@ -36,5 +36,7 @@ public class MainIakovPage extends Page {
 
     public void clickOnLoginButton() {
         clickElement(loginButton);
+
+
     }
 }
