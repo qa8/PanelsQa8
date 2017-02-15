@@ -1,6 +1,5 @@
 package com.telran.pages;
 
-import com.telran.TestNgTestBase;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.Color;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -143,11 +142,10 @@ public abstract class Page {
   }
 
   public boolean exists(WebElement element) {
-    try {
+
       return element.isDisplayed();
-    } catch (org.openqa.selenium.NoSuchElementException ignored) {
-      return false;
-    }
+
+
   }
 
   public String createId() {
