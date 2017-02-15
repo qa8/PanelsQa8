@@ -21,8 +21,8 @@ class LoginIakovPage extends Page {
   @FindBy(id = "pass")
   WebElement PassField;
 
-  @FindBy(id = "button")
-  WebElement button;
+  @FindBy(id = "loginButton")
+  WebElement loginButton;
 
   @FindBy(id = "managementList")
   WebElement managementList;
@@ -53,7 +53,7 @@ class LoginIakovPage extends Page {
   }
 
   public void YuriypressButton() {
-    clickElement(button);
+    clickElement(loginButton);
   }
 
   public void YuriyExpandManagementList() {
@@ -65,6 +65,8 @@ class LoginIakovPage extends Page {
   }
 
 
-
+  public void waitForLoginPageIsLoaded() {
+    waitUntilIsLoaded(loginButton);
+  }
 
 }

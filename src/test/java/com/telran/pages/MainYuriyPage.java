@@ -21,7 +21,7 @@ class MainYuriyPage extends Page {
     @FindBy(id = "pass")
     WebElement PassField;
 
-    @FindBy(id = "button")
+    @FindBy(id = "loginButton")
     WebElement button;
 
     @FindBy(id = "managementList")

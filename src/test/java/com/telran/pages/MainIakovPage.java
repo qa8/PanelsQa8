@@ -21,7 +21,7 @@ public class MainIakovPage extends Page {
     @FindBy(id = "pass")
     WebElement passwordField;
 
-    @FindBy(id = "button")
+    @FindBy(id = "loginButton")
     WebElement loginButton;
 
     public MainIakovPage(WebDriver driver) {

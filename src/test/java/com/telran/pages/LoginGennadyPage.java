@@ -22,7 +22,7 @@ public class LoginGennadyPage extends Page {
     @FindBy(id = "pass")
     WebElement passwordField;
 
-    @FindBy(id = "button")
+    @FindBy(id = "loginButton")
     WebElement loginbutton;
 
 

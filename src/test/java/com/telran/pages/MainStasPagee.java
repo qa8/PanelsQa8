@@ -22,7 +22,7 @@ public class MainStasPagee extends Page {
   @FindBy(id="pass")
   public WebElement passField;
 
-  @FindBy(id="button")
+  @FindBy(id = "loginButton")
   public WebElement loginButton;
 
   public MainStasPagee(WebDriver driver) {
@@ -39,7 +39,8 @@ public class MainStasPagee extends Page {
   public void fillPassField(String text){
     setElementText(passField, text);
   }
-  //press on the button
+
+  //press on the loginButton
   public void clickOnLoginButton() {
     clickElement(loginButton);
   }
