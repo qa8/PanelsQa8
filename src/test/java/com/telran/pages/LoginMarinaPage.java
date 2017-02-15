@@ -41,4 +41,8 @@ public class LoginMarinaPage extends Page {
         this.clickElement(loginButton);
     }
 
+    public void waiForLoginPageIsLoaded() {
+        waitUntilIsLoaded(loginButton);
+    }
+
 }
