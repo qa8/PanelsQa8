@@ -38,33 +38,66 @@ public class CompaniesAllaPage extends Page {
     @FindBy(id = "quit")
     public WebElement logoutButton;
 
+    //ElementsBlock for wait method
+    @FindBy(xpath = "//*[class='adminMenu']")
+    public WebElement adminMenuBlock;
+
     //tadiranProjectButton
     @FindBy(xpath = "//*[class='mdl-grid']/div[1]//a")
     public WebElement tadiranProjectButton;
     //diklaProjectButton
     @FindBy(xpath = "//*[class='mdl-grid']/div[2]//a")
-    public WebElement diklaProjectButton;
+    public WebElement clalitProjectButton;
     //clalitProjectButton
     @FindBy(xpath = "//*[class='mdl-grid']/div[3]//a")
-    public WebElement clalitProjectButton;
+    public WebElement diklaProjectButton;
 
 
     public CompaniesAllaPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
-
     //methods
 
+    public void waitForCompaniesPageInLoaded() {
+        waitUntilIsLoaded(adminMenuBlock);
+    }
     public void clickManagementButton() {
         clickElement(managementButton);
     }
-
     public void selectValueInDropdownManagement(String value) {
         selectValueInDropdownbyText(managementList, value);
     }
 
+    public void clickSurveysButton() {
+        clickElement(surveysButton);
+    }
+
+    public void selectValueInDropdownSurveys(String value) {
+        selectValueInDropdownbyText(surveysList, value);
+    }
+
+    public void clickReportsButton() {
+        clickElement(reportsButton);
+    }
+
+    public void selectValueInDropdownReports(String value) {
+        selectValueInDropdownbyText(reportsList, value);
+    }
+
+    public void clickAlertButton() {
+        clickElement(alertButton);
+    }
+
     public void clickTadiranProjectButton() {
         clickElement(tadiranProjectButton);
+    }
+
+    public void clickClalitProjectButton() {
+        clickElement(clalitProjectButton);
+    }
+
+    public void clickDiclaProjectButton() {
+        clickElement(diklaProjectButton);
     }
 }
