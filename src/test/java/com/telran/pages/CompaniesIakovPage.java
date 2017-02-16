@@ -67,7 +67,7 @@ public class CompaniesIakovPage extends Page {
     }
 
     public boolean isOnCompaniesPage() {
-        return exists(managementButton);
+        return exists(tadiranProjectButton);
     }
 
     public void clickManagementButton() {
