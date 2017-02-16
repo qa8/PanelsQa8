@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Sample page
  */
-class LoginIakovPage extends Page {
+public class LoginIakovPage extends Page {
 
   @FindBy(how = How.TAG_NAME, using = "h1")
   @CacheLookup
@@ -21,7 +21,7 @@ class LoginIakovPage extends Page {
   @FindBy(id = "pass")
   WebElement PassField;
 
-  @FindBy(id = "loginButton")
+  @FindBy(id = "button")
   WebElement loginButton;
 
   @FindBy(id = "managementList")
@@ -47,15 +47,15 @@ class LoginIakovPage extends Page {
   }
 
   //metods
-  public void Yuriyloginfield(String test) {
+  public void fillLoginField(String test) {
     setElementText(loginField, test);
   }
 
-  public void Yuriypasswordfield(String test) {
+  public void fillPasswordField(String test) {
     setElementText(PassField, test);
   }
 
-  public void YuriypressButton() {
+  public void pressLoginButton() {
     clickElement(loginButton);
   }
 
@@ -69,7 +69,7 @@ class LoginIakovPage extends Page {
 
 
   public void waitForLoginPageIsLoaded() {
-    waitUntilIsLoaded(loginButton);
+    waitUntilIsLoadedCustomTime(loginButton, 40);
   }
 
 }
