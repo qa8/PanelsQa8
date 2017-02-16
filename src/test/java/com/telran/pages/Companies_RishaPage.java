@@ -10,7 +10,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Boss on 11.02.2017.
  */
-public class Companies_RishaPage extends LoginIakovPage {
+public class Companies_RishaPage extends Page {
     @FindBy(how = How.TAG_NAME, using = "h1")
 
     @CacheLookup
