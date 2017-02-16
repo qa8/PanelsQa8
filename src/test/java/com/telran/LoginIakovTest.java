@@ -27,4 +27,16 @@ public class LoginIakovTest extends TestNgTestBase {
         loginIakovPage.pressLoginButton();
         Assert.assertTrue(loginIakovPage.isOnLoginPage());
     }
+
+    @Test
+    public void positivelogintest() {
+        driver.get("https://greengnome.github.io/panels/?#/login");
+        loginIakovPage.waitForLoginPageIsLoaded();
+        loginIakovPage.fillLoginField("admin");
+        loginIakovPage.fillPasswordField("12345");
+        loginIakovPage.pressLoginButton();
+        companiesIakovPage.waitForCompaniesPageInLoaded();
+        Assert.assertTrue(companiesIakovPage.isOnCompaniesPage());
+
+    }
 }

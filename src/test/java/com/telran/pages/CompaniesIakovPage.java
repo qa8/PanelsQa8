@@ -63,7 +63,11 @@ public class CompaniesIakovPage extends Page {
     //methods
 
     public void waitForCompaniesPageInLoaded() {
-        waitUntilIsLoaded(adminMenuBlock);
+        waitUntilIsLoadedCustomTime(adminMenuBlock, 30);
+    }
+
+    public boolean isOnCompaniesPage() {
+        return exists(managementButton);
     }
 
     public void clickManagementButton() {
