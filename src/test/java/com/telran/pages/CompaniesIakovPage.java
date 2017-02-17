@@ -55,6 +55,9 @@ public class CompaniesIakovPage extends Page {
     @FindBy(xpath = "//*[@class='mdl-grid']/div[3]//a")
     public WebElement diklaProjectButton;
 
+    @FindBy(xpath = "//select[@ng-model='selectedLanguage']")
+    public WebElement selectLanguage;
+
 
     public CompaniesIakovPage(WebDriver driver) {
         super(driver);
@@ -63,7 +66,11 @@ public class CompaniesIakovPage extends Page {
     //methods
 
     public void waitForCompaniesPageInLoaded() {
-        waitUntilIsLoaded(adminMenuBlock);
+        waitUntilIsLoadedCustomTime(tadiranProjectButton, 30);
+    }
+
+    public boolean isOnCompaniesPage() {
+        return exists(tadiranProjectButton);
     }
 
     public void clickManagementButton() {
@@ -111,4 +118,13 @@ public class CompaniesIakovPage extends Page {
     public void clickDiclaProjectButton() {
         clickElement(diklaProjectButton);
     }
+
+    public void selectEnglishLanguage() {
+        selectValueInDropdownbyText(selectLanguage, "English");
+    }
+
+    public void selecthebrewLanguage() {
+        selectValueInDropdownbyText(selectLanguage, "עברית");
+    }
+
 }
