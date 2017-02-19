@@ -44,6 +44,7 @@ public class MainStasPagee extends Page {
   public void clickOnLoginButton() {
     clickElement(loginButton);
   }
+  //
 
 
 
