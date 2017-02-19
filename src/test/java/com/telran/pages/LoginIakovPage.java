@@ -28,7 +28,7 @@ public class LoginIakovPage extends Page {
   WebElement managementList;
 
   @FindBy(xpath = "//h3[Contains(Text(),'Please log in to continue')]")
-  WebElement pleaseLogInHeader;
+  WebElement pleaseLogInheader;
 
   @FindBy(id = "surveysList")
   WebElement surveysList;
@@ -71,5 +71,10 @@ public class LoginIakovPage extends Page {
   public void waitForLoginPageIsLoaded() {
     waitUntilIsLoadedCustomTime(loginButton, 40);
   }
+
+  public boolean isOnLoginPage() {
+    return exists(pleaseLogInheader);
+  }
+
 
 }
