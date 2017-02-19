@@ -38,7 +38,7 @@ public class CompaniesIakovPage extends Page {
     public WebElement logoutButton;
 
     //ElementsBlock for wait method
-    @FindBy(xpath = "//*[class='adminMenu']")
+    @FindBy(xpath = "//*[@class='adminMenu']")
     public WebElement adminMenuBlock;
 
     //tadiranProjectButton

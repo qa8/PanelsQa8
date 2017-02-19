@@ -13,8 +13,10 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginIakovPage extends Page {
 
   @FindBy(how = How.TAG_NAME, using = "h1")
+
   @CacheLookup
   public WebElement header;
+
   @FindBy(id = "login")
   WebElement loginField;
 
