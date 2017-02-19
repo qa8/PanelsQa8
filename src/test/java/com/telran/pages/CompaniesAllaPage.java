@@ -1,9 +1,9 @@
 package com.telran.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
 
@@ -11,86 +11,55 @@ import org.openqa.selenium.support.PageFactory;
  * Created on 10.02.2017.
  */
 public class CompaniesAllaPage extends Page {
-    @FindBy(how = How.TAG_NAME, using = "h1")
-    public WebElement header;
 
-    @FindBy(id = "managementList")
-    public WebElement managementButton;
-    //management Drop-down list
-    @FindBy(xpath = "//*[for='managementList']")
-    public WebElement managementList;
-
-    @FindBy(id = "surveysList")
-    public WebElement surveysButton;
-    //surveys Drop-down list
-    @FindBy(xpath = "//*[for='surveysList']")
-    public WebElement surveysList;
-
-    @FindBy(id = "reportsList")
-    public WebElement reportsButton;
-    //reports Drop-down list
-    @FindBy(xpath = "//*[for='reportsList']")
-    public WebElement reportsList;
-
-    @FindBy(id = "alertsBtn")
-    public WebElement alertButton;
-
-    @FindBy(id = "quit")
-    public WebElement logoutButton;
 
     //ElementsBlock for wait method
-    @FindBy(xpath = "//*[class='adminMenu']")
+    @FindBy(xpath = "//*[@class='adminMenu']")
     public WebElement adminMenuBlock;
 
     //tadiranProjectButton
-    @FindBy(xpath = "//*[class='mdl-grid']/div[1]//a")
+    @FindBy(xpath = "//*[contains(@style,'tadiran')]/..//a")
+    public WebElement tadiranbyNameProjectButton;
+
+    @FindBy(xpath = "//*[@class='mdl-grid']/div[1]//a")
     public WebElement tadiranProjectButton;
+
     //diklaProjectButton
-    @FindBy(xpath = "//*[class='mdl-grid']/div[2]//a")
+    @FindBy(xpath = "//*[@class='mdl-grid']/div[2]//a")
     public WebElement clalitProjectButton;
     //clalitProjectButton
-    @FindBy(xpath = "//*[class='mdl-grid']/div[3]//a")
+    @FindBy(xpath = "//*[@class='mdl-grid']/div[3]//a")
     public WebElement diklaProjectButton;
 
+    @FindBy(xpath = "//select[@ng-model='selectedLanguage']")
+    public WebElement selectLanguage;
+
+    @FindBy(xpath = "//select[@ng-model='selectedLanguage']/option[1]")
+    public WebElement selectEnglishLanguage;
+
+    @FindBy(xpath = "//select[@ng-model='selectedLanguage']/option[2]")
+    public WebElement selectHebrewLanguage;
 
     public CompaniesAllaPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
     //methods
-
     public void waitForCompaniesPageInLoaded() {
-        waitUntilIsLoaded(adminMenuBlock);
-    }
-    public void clickManagementButton() {
-        clickElement(managementButton);
-    }
-    public void selectValueInDropdownManagement(String value) {
-        selectValueInDropdownbyText(managementList, value);
+        waitUntilIsLoadedCustomTime(adminMenuBlock, 40);
     }
 
-    public void clickSurveysButton() {
-        clickElement(surveysButton);
-    }
-
-    public void selectValueInDropdownSurveys(String value) {
-        selectValueInDropdownbyText(surveysList, value);
-    }
-
-    public void clickReportsButton() {
-        clickElement(reportsButton);
-    }
-
-    public void selectValueInDropdownReports(String value) {
-        selectValueInDropdownbyText(reportsList, value);
-    }
-
-    public void clickAlertButton() {
-        clickElement(alertButton);
+    public boolean isOnCompaniesPage() {
+        return exists(tadiranProjectButton);
     }
 
     public void clickTadiranProjectButton() {
         clickElement(tadiranProjectButton);
+    }
+
+    public void clickProjectButtonbyName(String company) {
+        String s = "//h2[contains(Text(),'" + company + "')]/../..//a";
+        driver.findElement(By.xpath(s)).click();
     }
 
     public void clickClalitProjectButton() {
@@ -100,4 +69,21 @@ public class CompaniesAllaPage extends Page {
     public void clickDiclaProjectButton() {
         clickElement(diklaProjectButton);
     }
-}
+
+    public void selectEnglishLanguage() {
+        selectValueInDropdownbyText(selectLanguage, "English");
+    }
+
+    public boolean englishLanguageIsSelected() {
+        return exists(selectEnglishLanguage);
+    }
+
+    public void selecthebrewLanguage() {
+        selectValueInDropdownbyText(selectLanguage, "עברית");
+    }
+
+    public boolean hebrewLanguageIsSelected() {
+        return exists(selectHebrewLanguage);
+    }
+    }
+
