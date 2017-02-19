@@ -29,9 +29,6 @@ public class LoginIakovPage extends Page {
   @FindBy(id = "managementList")
   WebElement managementList;
 
-  @FindBy(xpath = "//h3[Contains(Text(),'Please log in to continue')]")
-  WebElement pleaseLogInheader;
-
   @FindBy(id = "surveysList")
   WebElement surveysList;
 
@@ -40,6 +37,9 @@ public class LoginIakovPage extends Page {
 
   @FindBy(id = "quit")
   WebElement LogOut;
+
+  @FindBy(xpath = "//h3[Contains(Text(),'Please log in to continue')]") // ищет элемент по h3 - локатор и проверяет что на странице есть 'Please log in to continue'
+          WebElement pleaseLogInheader;
 
 
   public LoginIakovPage(WebDriver driver) {
