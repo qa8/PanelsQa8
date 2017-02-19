@@ -8,6 +8,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginMarinaTest extends TestNgTestBase {
+
+    private static final String URL_LINK = "https://greengnome.github.io/panels/?#/login";
+    private static final String PSW_ADM = "12345";
+    private static final String LOGIN_ADM ="Admin" ;
+
+
     private LoginMarinaPage loginMarinaPage;
     private CompaniesMarinaPage companiesMarinaPage;
 
@@ -19,7 +25,7 @@ public class LoginMarinaTest extends TestNgTestBase {
 
     @Test
     public void negativeLoginTest() {
-        driver.get("https://greengnome.github.io/panels/?#/login");
+        driver.get(URL_LINK);
         loginMarinaPage.waitForLoginPageIsLoadedTime50();
         loginMarinaPage.fillLoginField("sss");
         loginMarinaPage.fillPassField("pppp");
@@ -29,11 +35,24 @@ public class LoginMarinaTest extends TestNgTestBase {
     }
 
     @Test
-    public void positiveAdminLoginTest() {
-        driver.get("https://greengnome.github.io/panels/?#/login");
+    public void negativeLoginTestPswIncorrect() {
+        driver.get(URL_LINK);
         loginMarinaPage.waitForLoginPageIsLoadedTime50();
-        loginMarinaPage.fillLoginField("Admin");
-        loginMarinaPage.fillPassField("12345");
+        loginMarinaPage.fillLoginField(LOGIN_ADM);
+        loginMarinaPage.fillPassField("hjkwi");
+        loginMarinaPage.clickOnLoginButton();
+        //companiesMarinaPage.waitForCompanyLoaded("Tadiran"); - it doesn't work (with dynamic element)
+        companiesMarinaPage.waitForTadiranProjectLoaded();
+        Assert.assertTrue(loginMarinaPage.isOnLoginPage());
+    }
+
+
+    @Test
+    public void positiveAdminLoginTest() {
+        driver.get(URL_LINK);
+        loginMarinaPage.waitForLoginPageIsLoadedTime50();
+        loginMarinaPage.fillLoginField(LOGIN_ADM);
+        loginMarinaPage.fillPassField(PSW_ADM);
         loginMarinaPage.clickOnLoginButton();
         //companiesMarinaPage.waitForCompanyLoaded("Tadiran"); - it doesn't work (with dynamic element)
         companiesMarinaPage.waitForTadiranProjectLoaded();
