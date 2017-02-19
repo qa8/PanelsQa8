@@ -12,16 +12,19 @@ import org.openqa.selenium.support.PageFactory;
 public class LoginMarinaPage extends Page {
 
     @FindBy(how = How.TAG_NAME, using = "h1")
-
     public WebElement header;
 
     @FindBy(id = "login")
     WebElement loginField;
+
     @FindBy(id = "pass")
     WebElement passwordField;
 
-    @FindBy(id = "loginButton")
+    @FindBy(id = "button")
     WebElement loginButton;
+
+    @FindBy(xpath = "//h3[contains(text(),'Please log in to continue')]")
+    WebElement pleaseLogInHeader;
 
     public LoginMarinaPage(WebDriver driver) {
         super(driver);
@@ -40,9 +43,14 @@ public class LoginMarinaPage extends Page {
     public void clickOnLoginButton() {
         this.clickElement(loginButton);
     }
-
-    public void waiForLoginPageIsLoaded() {
+    public void waitForLoginPageIsLoaded() {
         waitUntilIsLoaded(loginButton);
     }
+    public void waitForLoginPageIsLoadedTime50() {
+        waitUntilIsLoadedCustomTime(loginButton, 50);
+    }
 
+    public boolean isOnLoginPage(){
+    return exists(pleaseLogInHeader);
+    }
 }
