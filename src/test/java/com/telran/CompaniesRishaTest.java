@@ -24,7 +24,6 @@ public class CompaniesRishaTest extends TestNgTestBase {
         driver.get(url);
         companiesPage_Risha.waitForCompaniesPageInLoaded();
         companiesPage_Risha.clickOnManagementButton();
-        // companiesPage_Risha.selectValueInDropdownManagement();
         companiesPage_Risha.clickOnSurveysButton();
         //companiesPage_Risha.selectValueInDropdownSurveys();
         companiesPage_Risha.clickOnReportsButton();
