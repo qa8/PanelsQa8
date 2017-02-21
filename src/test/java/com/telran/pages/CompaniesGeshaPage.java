@@ -58,4 +58,7 @@ public class CompaniesGeshaPage extends Page {
     public void clickOnQuitButton() {
         clickElement(quitButton);
     }
+
+    public static void waitForCompaniesPageInLoaded() {
+    }
 }
