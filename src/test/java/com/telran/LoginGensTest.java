@@ -1,7 +1,6 @@
 package com.telran;
 
 import com.telran.pages.CompaniesGeshaPage;
-import com.telran.pages.LoginGeshaPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
@@ -46,6 +45,6 @@ public class LoginGensTest extends TestNgTestBase {
         loginGeshaPage.fillPasswordField("12345");
         loginGeshaPage.pressLoginButton();
         companiesGeshaPage.waitForCompaniesPageInLoaded();
-        Assert.assertTrue(companiesGeshaPage.isOnCompaniesPage);
+        Assert.assertTrue(companiesGeshaPage.isOnCompaniesPage());
     }
 }

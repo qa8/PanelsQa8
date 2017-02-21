@@ -12,10 +12,8 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class LoginGeshaPage extends Page {
 
-  public static boolean isOnLoginPage;
-  //private static WebElement pleaseLogInheader;
-  //public static boolean isOnLoginPage;
   @FindBy(how = How.TAG_NAME, using = "h1")
+
   @CacheLookup
   public WebElement header;
 
@@ -23,10 +21,10 @@ public class LoginGeshaPage extends Page {
   WebElement loginField;
 
   @FindBy(id = "pass")
-  WebElement passwordField;
+  WebElement PassField;
 
-  @FindBy(id = "Loginbutton")
-  WebElement loginbutton;
+  @FindBy(id = "button")
+  WebElement loginButton;
 
   @FindBy(id = "managementList")
   WebElement managementList;
@@ -40,8 +38,7 @@ public class LoginGeshaPage extends Page {
   @FindBy(id = "quit")
   WebElement LogOut;
 
-  @FindBy(xpath = "//h3[Contains(Text(),'Please log in to continue')]")
-  static // ищет элемент по h3 - локатор и проверяет что на странице есть 'Please log in to continue'
+  @FindBy(xpath = "//h3[Contains(Text(),'Please log in to continue')]") // ищет элемент по h3 - локатор и проверяет что на странице есть 'Please log in to continue'
           WebElement pleaseLogInheader;
 
 
@@ -51,17 +48,19 @@ public class LoginGeshaPage extends Page {
 
   }
 
+
+
   //metods
   public void fillLoginField(String test) {
     setElementText(loginField, test);
   }
 
   public void fillPasswordField(String test) {
-    setElementText(passwordField, test);
+    setElementText(PassField, test);
   }
 
   public void pressLoginButton() {
-    clickElement(loginbutton);
+    clickElement(loginButton);
   }
 
   public void YuriyExpandManagementList() {
@@ -74,17 +73,12 @@ public class LoginGeshaPage extends Page {
 
 
   public void waitForLoginPageIsLoaded() {
-    waitUntilIsLoadedCustomTime(loginbutton, 25);
+    waitUntilIsLoadedCustomTime(loginButton, 40);
   }
 
-  public static boolean isOnLoginPage() {
+  public boolean isOnLoginPage() {
     return exists(pleaseLogInheader);
   }
 
-  public void clickOnLoginButton() {
-  }
+
 }
-
-
-
-
