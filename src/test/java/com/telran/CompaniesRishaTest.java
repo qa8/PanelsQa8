@@ -7,6 +7,7 @@ import com.telran.pages.LoginRishaPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Test;
 
 public class CompaniesRishaTest extends TestNgTestBase {
     public LoginRishaPage loginRishaPage;
@@ -20,6 +21,7 @@ public class CompaniesRishaTest extends TestNgTestBase {
         companiesPage_Risha = PageFactory.initElements(driver, CompaniesPage_Risha.class);
     }
 
+    @Test
     public void positiveMenuCompaniesTest() {
         driver.get(url);
         companiesPage_Risha.waitForCompaniesPageInLoaded();
