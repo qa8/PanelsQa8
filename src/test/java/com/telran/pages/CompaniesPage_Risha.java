@@ -9,7 +9,7 @@ import org.openqa.selenium.support.PageFactory;
 /**
  * Created by Boss on 11.02.2017.
  */
-public class CompaniesPageRisha extends Page {
+public class CompaniesPage_Risha extends Page {
 
 
     @FindBy(id = "managementList")
@@ -59,20 +59,24 @@ public class CompaniesPageRisha extends Page {
     @FindBy(xpath = "//select[@ng-model='selectedLanguage']")
     public WebElement selectLanguage;
 
-    public CompaniesPageRisha(WebDriver driver) {
+    public CompaniesPage_Risha(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+
     //methods
     public void waitForCompaniesPageInLoaded() {
         waitUntilIsLoadedCustomTime(tadiranProjectButton, 30);
     }
+
     public boolean isOnCompaniesPage() {
         return exists(tadiranProjectButton);
     }
+
     public void clickOnManagementButton() {
         clickElement(managementButton);
     }
+
     public void selectValueInDropdownManagement(String value) {
         selectValueInDropdownbyText(managementList, value);
     }
@@ -80,6 +84,7 @@ public class CompaniesPageRisha extends Page {
     public void clickOnSurveysButton() {
         clickElement(surveysButton);
     }
+
     public void selectValueInDropdownSurveys(String value) {
         selectValueInDropdownbyText(surveysList, value);
     }
@@ -87,6 +92,7 @@ public class CompaniesPageRisha extends Page {
     public void clickOnReportsButton() {
         clickElement(reportsButton);
     }
+
     public void selectValueInDropdownReports(String value) {
         selectValueInDropdownbyText(reportsList, value);
     }
@@ -98,13 +104,16 @@ public class CompaniesPageRisha extends Page {
     public void selectValueInDropdownAlerts(String value) {
         selectValueInDropdownbyText(alertsList, value);
     }
+
     public void clickTadiranProjectButton() {
         clickElement(tadiranProjectButton);
     }
+
     public void clickProjectButtonbyName(String company) {
         String s = "//h2[contains(Text(),'" + company + "')]/../..//a";
         driver.findElement(By.xpath(s)).click();
     }
+
     public void clickClalitProjectButton() {
         clickElement(clalitProjectButton);
     }
