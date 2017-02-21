@@ -141,7 +141,7 @@ public abstract class Page {
     return chosenOption.equals(label);
   }
 
-  public boolean exists(WebElement element) {
+  public static boolean exists(WebElement element) {
 
       return element.isDisplayed();
 
