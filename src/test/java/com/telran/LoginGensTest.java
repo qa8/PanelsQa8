@@ -29,7 +29,7 @@ public class LoginGensTest extends TestNgTestBase {
 
     @Test
 
-    public void negativelogintest(){
+    public void negativeLogintest(){
         driver.get("https://greengnome.github.io/panels/#/login");
         loginGeshaPage.waitForLoginPageIsLoaded();
         loginGeshaPage.fillLoginField("sssss");
@@ -39,7 +39,7 @@ public class LoginGensTest extends TestNgTestBase {
     }
 
     @Test
-    public void positivelogintest(){
+    public void positiveLogintest(){
         driver.get("https://greengnome.github.io/panels/#/login");
         loginGeshaPage.waitForLoginPageIsLoaded();
         loginGeshaPage.fillLoginField("admin");
