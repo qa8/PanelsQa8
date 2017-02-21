@@ -1,5 +1,6 @@
 package com.telran;
 
+import com.telran.pages.CompaniesPage_Risha;
 import com.telran.pages.LoginRishaPage;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
