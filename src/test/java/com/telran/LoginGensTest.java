@@ -29,23 +29,23 @@ public class LoginGensTest extends TestNgTestBase {
 
     @Test
 
-    public void negativeLogintest(){
+    public void negativelogintest(){
         driver.get("https://greengnome.github.io/panels/#/login");
         loginGeshaPage.waitForLoginPageIsLoaded();
         loginGeshaPage.fillLoginField("sssss");
         loginGeshaPage.fillPasswordField("hjkjd");
-        loginGeshaPage.clickOnLoginButton();
-        Assert.assertTrue(LoginGeshaPage.isOnLoginPage());
+        loginGeshaPage.pressLoginButton();
+        Assert.assertTrue(loginGeshaPage.isOnLoginPage());
     }
 
     @Test
-    public void positiveLogintest(){
+    public void positivelogintest(){
         driver.get("https://greengnome.github.io/panels/#/login");
         loginGeshaPage.waitForLoginPageIsLoaded();
         loginGeshaPage.fillLoginField("admin");
         loginGeshaPage.fillPasswordField("12345");
-        loginGeshaPage.clickOnLoginButton();
-        CompaniesGeshaPage.waitForCompaniesPageInLoaded();
-        Assert.assertTrue(LoginGeshaPage.isOnLoginPage);
+        loginGeshaPage.pressLoginButton();
+        companiesGeshaPage.waitForCompaniesPageInLoaded();
+        Assert.assertTrue(companiesGeshaPage.isOnCompaniesPage);
     }
 }
