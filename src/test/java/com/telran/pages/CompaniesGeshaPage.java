@@ -30,6 +30,7 @@ public class CompaniesGeshaPage extends Page {
 
     @FindBy(id = "quit")
     WebElement quitButton;
+    public boolean isOnCompaniesPage;
 
 
     public CompaniesGeshaPage(WebDriver driver) {
