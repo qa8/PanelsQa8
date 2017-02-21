@@ -37,7 +37,7 @@ public class LoginRishaPage extends Page {
     WebElement surveysList;
 
     @FindBy(id = "reportsList")
-    WebElement reportsListt;
+    WebElement reportsList;
 
     @FindBy(id = "quit")
     WebElement logoutButton;
@@ -65,7 +65,7 @@ public class LoginRishaPage extends Page {
     }
 
     public void waitForLoginPageIsLoaded() {
-        waitUntilIsLoadedCustomTime(loginButton, 700);
+        waitUntilIsLoadedCustomTime(loginButton, 70);
     }
 
     public boolean isOnLoginPage() {
