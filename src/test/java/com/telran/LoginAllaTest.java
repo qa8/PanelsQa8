@@ -8,49 +8,51 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class LoginAllaTest extends TestNgTestBase {
-    public LoginAllaPage loginAllaPage;
-    public CompaniesAllaPage companiesAllaPage;
-    private String url = "https://greengnome.github.io/panels/?#/login";
-    private String rightLogin = "admin";
-    private String rightPassword = "12345";
+  private static final String URL_LOG = "https://greengnome.github.io/panels/?#/login";
+  private static final String ADM_LOG = "admin";
+  private static final String ADM_PSW = "12345";
 
-    @BeforeMethod
-    public void initPageObjects() {
-        loginAllaPage = PageFactory.initElements(driver, LoginAllaPage.class);
-        companiesAllaPage = PageFactory.initElements(driver, CompaniesAllaPage.class);
-    }
+  public LoginAllaPage loginAllaPage;
+  public CompaniesAllaPage companiesAllaPage;
 
-    @Test//incorrect login
-    public void negativeLoginTest1() {
-        driver.get(url);
-        loginAllaPage.waitForLoginPageIsLoaded();
-        loginAllaPage.fillLoginField("pppp");
-        loginAllaPage.fillPasswordField(rightPassword);
-        loginAllaPage.clickLoginButton();
-        loginAllaPage.waitForLoginPageIsLoaded();
-        Assert.assertTrue(loginAllaPage.isOnLoginPage());
+  @BeforeMethod
+  public void initPageObjects() {
+    loginAllaPage = PageFactory.initElements(driver, LoginAllaPage.class);
+    companiesAllaPage = PageFactory.initElements(driver, CompaniesAllaPage.class);
+  }
 
-    }
+  @Test//incorrect login
+  public void negativeLoginTest1() {
+    driver.get(URL_LOG);
+    loginAllaPage.waitForLoginPageIsLoaded();
+    loginAllaPage.fillLoginField("pppp");
+    loginAllaPage.fillPasswordField(ADM_PSW);
+    loginAllaPage.clickLoginButton();
+    loginAllaPage.waitForLoginPageIsLoaded();
+    Assert.assertTrue(loginAllaPage.isOnLoginPage());
 
-    @Test//incorrect password
-    public void negativeLoginTest2() {
-        driver.get(url);
-        loginAllaPage.waitForLoginPageIsLoaded();
-        loginAllaPage.fillLoginField(rightLogin);
-        loginAllaPage.fillPasswordField("jij09i");
-        loginAllaPage.clickLoginButton();
-        loginAllaPage.waitForLoginPageIsLoaded();
-        Assert.assertTrue(loginAllaPage.isOnLoginPage());
+  }
 
-    }
+  @Test//incorrect password
+  public void negativeLoginTest2() {
+    driver.get(URL_LOG);
+    loginAllaPage.waitForLoginPageIsLoaded();
+    loginAllaPage.fillLoginField(ADM_LOG);
+    loginAllaPage.fillPasswordField("jij09i");
+    loginAllaPage.clickLoginButton();
+    loginAllaPage.waitForLoginPageIsLoaded();
+    Assert.assertTrue(loginAllaPage.isOnLoginPage());
 
-    public void pozitiveLoginTest() {
-        driver.get(url);
-        loginAllaPage.waitForLoginPageIsLoaded();
-        loginAllaPage.fillLoginField("admin");
-        loginAllaPage.fillPasswordField("12345");
-        loginAllaPage.clickLoginButton();
-        companiesAllaPage.waitForCompaniesPageInLoaded();
-        Assert.assertTrue(companiesAllaPage.isOnCompaniesPage());
-    }
+  }
+
+  @Test
+  public void pozitiveLoginTest() {
+    driver.get(URL_LOG);
+    loginAllaPage.waitForLoginPageIsLoaded();
+    loginAllaPage.fillLoginField(ADM_LOG);
+    loginAllaPage.fillPasswordField(ADM_PSW);
+    loginAllaPage.clickLoginButton();
+    companiesAllaPage.waitForCompaniesPageInLoaded();
+    Assert.assertTrue(companiesAllaPage.isOnCompaniesPage());
+  }
 }

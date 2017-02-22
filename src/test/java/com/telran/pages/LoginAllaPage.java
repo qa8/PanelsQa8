@@ -11,48 +11,48 @@ import org.openqa.selenium.support.PageFactory;
  */
 public class LoginAllaPage extends Page {
 
-    @FindBy(how = How.TAG_NAME, using = "h1")
+  @FindBy(how = How.TAG_NAME, using = "h1")
 
-    public WebElement header;
-    @FindBy(id = "login")
-    public WebElement loginField;
+  public WebElement header;
+  @FindBy(id = "login")
+  public WebElement loginField;
 
-    @FindBy(id = "pass")
-    public WebElement passwordField;
+  @FindBy(id = "pass")
+  public WebElement passwordField;
 
-    @FindBy(id = "button")
-    public WebElement loginButton;
+  @FindBy(id = "button")
+  public WebElement loginButton;
 
-    @FindBy(xpath = "//h3[Contains(Text(),'Please log in to continue')]")
-    WebElement pleaseLogInheader;
+  @FindBy(xpath = "//hgroup/h3")
+  WebElement pleaseLogInheader;
 
-    public LoginAllaPage(WebDriver driver) {
+  public LoginAllaPage(WebDriver driver) {
 
-        super(driver);
-        PageFactory.initElements(driver, this);
-    }
+    super(driver);
+    PageFactory.initElements(driver, this);
+  }
 
-    //methods
-    public void fillLoginField(String text) {
+  //methods
+  public void fillLoginField(String text) {
 
-        setElementText(loginField, text);
-    }
+    setElementText(loginField, text);
+  }
 
-    public void fillPasswordField(String text) {
+  public void fillPasswordField(String text) {
 
-        setElementText(passwordField, text);
-    }
+    setElementText(passwordField, text);
+  }
 
-    public void clickLoginButton() {
+  public void clickLoginButton() {
 
-        clickElement(loginButton);
-    }
+    clickElement(loginButton);
+  }
 
-    public void waitForLoginPageIsLoaded() {
-        waitUntilIsLoadedCustomTime(loginButton, 40);
-    }
+  public void waitForLoginPageIsLoaded() {
+    waitUntilIsLoadedCustomTime(pleaseLogInheader, 40);
+  }
 
-    public boolean isOnLoginPage() {
-        return exists(pleaseLogInheader);
-    }
+  public boolean isOnLoginPage() {
+    return exists(pleaseLogInheader);
+  }
 }
