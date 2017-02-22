@@ -15,11 +15,16 @@ public class CompaniesAnna extends Page {
     @FindBy(how = How.TAG_NAME, using = "h1")
     public WebElement header;
 
-    @FindBy(id = "managementList")
+    //    @FindBy(id = "managementList")
+    @FindBy(xpath = "//*[@id='managementList']")
     public WebElement managementButton;
+
     //management Drop-down list
     @FindBy(xpath = "//*[for='managementList']")
     public WebElement managementList;
+
+    @FindBy(xpath = "//*[@class='mdl-layout__drawer-button']")
+    public WebElement menuButton;
 
     @FindBy(id = "surveysList")
     public WebElement surveysButton;
@@ -46,12 +51,24 @@ public class CompaniesAnna extends Page {
     //tadiranProjectButton
     @FindBy(xpath = "//*[class='mdl-grid']/div[1]//a")
     public WebElement tadiranProjectButton;
+
     //diklaProjectButton
     @FindBy(xpath = "//*[class='mdl-grid']/div[2]//a")
     public WebElement clalitProjectButton;
     //clalitProjectButton
-    @FindBy(xpath = "//*[class='mdl-grid']/div[3]//a")
+
+    //@FindBy(xpath = "//*[class='mdl-grid']/div[3]//a")
+    @FindBy(xpath = "//h2[contains(text(),'Dikla')]")
     public WebElement diklaProjectButton;
+
+    @FindBy(xpath = "//span[contains(text(),'Companies')]")
+    public WebElement companiesButton;
+
+    @FindBy(xpath = "//*[@ng-model='selectedLanguage']")
+    public WebElement languageButton;
+
+    @FindBy(xpath = "//*[contains(text(),'חברות')]")
+    public WebElement hebrewButton;
 
 
     public CompaniesAnna(WebDriver driver) {
@@ -63,11 +80,9 @@ public class CompaniesAnna extends Page {
     public void waitForCompaniesPageInLoaded() {
         waitUntilIsLoaded(adminMenuBlock);
     }
-
     public void clickManagementButton() {
         clickElement(managementButton);
     }
-
     public void selectValueInDropdownManagement(String value) {
         selectValueInDropdownbyText(managementList, value);
     }
@@ -110,10 +125,40 @@ public class CompaniesAnna extends Page {
     }
 
     public boolean isManagementButtonDisplayed() {
-
-
         return exists(managementButton);
     }
 
+    public boolean isManagementButtonPresent() {
+        return verifyElementIsPresent(managementButton);
+    }
+
+    public boolean isDiklaProgectPresent() {
+        return verifyElementIsPresent(diklaProjectButton);
+    }
+
+    public boolean isCompaniesButtonPresent() {
+        return verifyElementIsPresent(companiesButton);
+    }
+
+    public boolean isTadiranProjectPresent() {
+        return verifyElementIsPresent(tadiranProjectButton);
+    }
+
+    public boolean isMenuButtonDisplayed() {
+        return exists(menuButton);
+    }
+
+    public void pressLogoutButton() {
+        clickElement(logoutButton);
+    }
+
+    public void chooseLanguage() {
+        selectValueInDropdown(languageButton, "he");
+
+    }
+
+    public boolean changedLanguage() {
+        return exists(hebrewButton);
+    }
 }
 

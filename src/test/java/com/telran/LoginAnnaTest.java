@@ -29,11 +29,11 @@ public class LoginAnnaTest extends TestNgTestBase {
 
         loginPage.fillLoginField("aaaaaaa");
         loginPage.fillPasswordField("   ");
-        // Assert.assertTrue(loginPage.isOnLoginPage());
 
         loginPage.pressLoginButton();
         loginPage.waitUntilIsLoadedCustomTime(loginPage.alertWrongLogin, 20);
 
+//         Assert.assertTrue(loginPage.isOnLoginPage());
         Assert.assertTrue(loginPage.isAlertDisplayed());
     }
 
@@ -47,7 +47,33 @@ public class LoginAnnaTest extends TestNgTestBase {
 
         loginPage.pressLoginButton();
         loginPage.waitUntilIsLoadedCustomTime(companiesAnna.managementButton, 30);
-        Assert.assertTrue(companiesAnna.isManagementButtonDisplayed());
+//        Assert.assertTrue(companiesAnna.isManagementButtonDisplayed());
+        Assert.assertTrue(companiesAnna.isManagementButtonPresent());
+    }
+
+    @Test
+    public void positiveLoginTestAnyScreen() {
+        driver.get(url);
+        loginPage.waitForLoginPageLoaded();
+
+        loginPage.fillLoginField(rightUsername);
+        loginPage.fillPasswordField(rightPassword);
+
+        loginPage.pressLoginButton();
+//        loginPage.wait(20000, 0);
+
+//        loginPage.waitUntilIsLoadedCustomTime(companiesAnna.menuButton, 20);
+//        if(!companiesAnna.isMenuButtonDisplayed()) {
+//            Assert.assertTrue(companiesAnna.isManagementButtonPresent());
+//        }
+
+        loginPage.waitUntilIsLoadedCustomTime(companiesAnna.managementButton, 15);
+        if (!companiesAnna.isManagementButtonPresent()) {
+            Assert.assertTrue(companiesAnna.isMenuButtonDisplayed());
+            companiesAnna.menuButton.click();
+        }
+//        loginPage.waitUntilIsLoadedCustomTime(companiesAnna.managementButton, 5);
+        Assert.assertTrue(companiesAnna.isManagementButtonPresent());
     }
 
     @Test
@@ -91,4 +117,18 @@ public class LoginAnnaTest extends TestNgTestBase {
         Assert.assertTrue(loginPage.isAlertDisplayed());
     }
 
+    @Test
+    public void positiveLoginTestVika() {
+        driver.get(url);
+        loginPage.waitForLoginPageLoaded();
+
+        loginPage.fillLoginField(rightUsername);
+        loginPage.fillPasswordField(rightPassword);
+
+        loginPage.pressLoginButton();
+//        loginPage.waitUntilIsLoadedCustomTime(companiesAnna.tadiranProjectButton, 30);
+        loginPage.waitUntilIsLoadedCustomTime(companiesAnna.diklaProjectButton, 30);
+//        Assert.assertTrue(companiesAnna.isCompaniesButtonPresent());
+        Assert.assertTrue(companiesAnna.isDiklaProgectPresent());
+    }
 }
