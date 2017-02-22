@@ -78,5 +78,14 @@ public class LoginIakovPage extends Page {
     return exists(pleaseLogInheader);
   }
 
+  public void login(String username, String password) {
+    openloginpage();
+    fillLoginField(username);
+    fillPasswordField(password);
+    pressLoginButton();
+  }
 
+  public void openloginpage() {
+    driver.get("");
+  }
 }

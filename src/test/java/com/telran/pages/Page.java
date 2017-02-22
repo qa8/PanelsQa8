@@ -27,6 +27,12 @@ public abstract class Page {
     this.driver = driver;
   }
 
+  public static boolean exists(WebElement element) {
+
+    return element.isDisplayed();
+
+
+  }
 
   public void goBackBrowserButton() {
     driver.navigate().back();
@@ -39,7 +45,6 @@ public abstract class Page {
   public void reloadPage() {
     driver.navigate().refresh();
   }
-
 
   public String getTitle() {
     return driver.getTitle();
@@ -67,7 +72,6 @@ public abstract class Page {
     // Assert.assertEquals(element.getAttribute("value"), text);
   }
 
-
   public void clickElement(WebElement element) {
     // Log.info("clicking on element " + element + "");
     element.click();
@@ -81,6 +85,11 @@ public abstract class Page {
     }
   }
 
+  // public void selectValueInDropdown(WebElement dropdown, String value) {
+  //   Select select = new Select(dropdown);
+  //  select.selectByValue(value);
+  // }
+
   public void waitUntilIsLoaded(WebElement element) {
     try {
       new WebDriverWait(driver, 7).until(ExpectedConditions.visibilityOf(element));
@@ -91,11 +100,6 @@ public abstract class Page {
       e.printStackTrace();
     }
   }
-
-  // public void selectValueInDropdown(WebElement dropdown, String value) {
-  //   Select select = new Select(dropdown);
-  //  select.selectByValue(value);
-  // }
 
   // Returns label that we chose
   public String selectValueInDropdown(WebElement dropdown, String value) {
@@ -139,13 +143,6 @@ public abstract class Page {
   // Verifies that we chose the label that we wanted.
   public boolean verifyTextBooleanInDropDown(String label, String chosenOption) {
     return chosenOption.equals(label);
-  }
-
-  public static boolean exists(WebElement element) {
-
-      return element.isDisplayed();
-
-
   }
 
   public String createId() {

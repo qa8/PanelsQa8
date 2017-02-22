@@ -1,5 +1,6 @@
 package com.telran.pages;
 
+import com.telran.CompaniesAnnaTest;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
@@ -68,4 +69,14 @@ public class LoginAnnaPage extends Page {
         act.doubleClick(loginButton).build().perform();
     }
 
+    public void Login(String rightUsername, String rightPassword, WebElement managementButton, CompaniesAnnaTest companiesAnnaTest) {
+
+        waitForLoginPageLoaded();
+
+        fillLoginField(rightUsername);
+        fillPasswordField(rightPassword);
+
+        pressLoginButton();
+        waitUntilIsLoadedCustomTime(managementButton, 30);
+    }
 }

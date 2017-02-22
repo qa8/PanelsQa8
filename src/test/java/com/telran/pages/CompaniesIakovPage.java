@@ -58,6 +58,10 @@ public class CompaniesIakovPage extends Page {
     @FindBy(xpath = "//select[@ng-model='selectedLanguage']")
     public WebElement selectLanguage;
 
+    @FindBy(xpath = "//*[@id='menu']/header/div[2]/span[1]")
+    public WebElement companyLabel;
+
+
 
     public CompaniesIakovPage(WebDriver driver) {
         super(driver);
@@ -120,11 +124,20 @@ public class CompaniesIakovPage extends Page {
     }
 
     public void selectEnglishLanguage() {
-        selectValueInDropdownbyText(selectLanguage, "English");
+        selectValueInDropdown(selectLanguage, "en");
     }
 
     public void selecthebrewLanguage() {
-        selectValueInDropdownbyText(selectLanguage, "עברית");
+        selectValueInDropdown(selectLanguage, "he");
     }
+
+    public boolean languageisEnglish() {
+        return companyLabel.getText() == "Companies";
+    }
+
+    public boolean languageisHebrew() {
+        return companyLabel.getText() == "חברות";
+    }
+
 
 }

@@ -29,14 +29,7 @@ public class CompaniesAnnaTest extends TestNgTestBase {
 
     @Test
     public void positiveLogoutTest() {
-        driver.get(url);
-        loginPage.waitForLoginPageLoaded();
-
-        loginPage.fillLoginField(rightUsername);
-        loginPage.fillPasswordField(rightPassword);
-
-        loginPage.pressLoginButton();
-        loginPage.waitUntilIsLoadedCustomTime(companiesAnna.managementButton, 30);
+        loginPage.Login(rightUsername, rightPassword, companiesAnna.managementButton, this);
 //        Assert.assertTrue(companiesAnna.isManagementButtonDisplayed());
         Assert.assertTrue(companiesAnna.isManagementButtonPresent());
         companiesAnna.pressLogoutButton();
@@ -46,14 +39,7 @@ public class CompaniesAnnaTest extends TestNgTestBase {
 
     @Test
     public void chooseLanguageTest() {
-        driver.get(url);
-        loginPage.waitForLoginPageLoaded();
-
-        loginPage.fillLoginField(rightUsername);
-        loginPage.fillPasswordField(rightPassword);
-
-        loginPage.pressLoginButton();
-        loginPage.waitUntilIsLoadedCustomTime(companiesAnna.languageButton, 30);
+        loginPage.Login(rightUsername, rightPassword, companiesAnna.languageButton, this);
 
         companiesAnna.chooseLanguage();
         loginPage.waitUntilIsLoadedCustomTime(companiesAnna.menuButton, 20);
