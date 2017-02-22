@@ -22,7 +22,7 @@ public class LoginAnnaPage extends Page {
     @FindBy(id = "pass")
     public WebElement passwordField;
 
-    @FindBy(xpath = "//h3[Contains(Text(),'Please log in to continue')]")
+    @FindBy(xpath = "//h3[contains(text(),'Please log in to continue')]")
     public WebElement pleaseLogInheader;
 
     @FindBy(xpath = "//p[@ng-bind='alert']")
