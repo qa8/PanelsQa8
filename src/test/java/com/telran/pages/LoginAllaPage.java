@@ -33,23 +33,27 @@ public class LoginAllaPage extends Page {
   }
 
   //methods
-  public void fillLoginField(String text) {
+  public LoginAllaPage fillLoginField(String text) {
 
     setElementText(loginField, text);
+    return this;
   }
 
-  public void fillPasswordField(String text) {
+  public LoginAllaPage fillPasswordField(String text) {
 
     setElementText(passwordField, text);
+    return this;
   }
 
-  public void clickLoginButton() {
+  public LoginAllaPage clickLoginButton() {
 
     clickElement(loginButton);
+    return this;
   }
 
-  public void waitForLoginPageIsLoaded() {
+  public LoginAllaPage waitForLoginPageIsLoaded() {
     waitUntilIsLoadedCustomTime(pleaseLogInheader, 40);
+    return this;
   }
 
   public boolean isOnLoginPage() {

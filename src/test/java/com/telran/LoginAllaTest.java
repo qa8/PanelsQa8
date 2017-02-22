@@ -36,11 +36,11 @@ public class LoginAllaTest extends TestNgTestBase {
   @Test//incorrect password
   public void negativeLoginTest2() {
     driver.get(URL_LOG);
-    loginAllaPage.waitForLoginPageIsLoaded();
-    loginAllaPage.fillLoginField(ADM_LOG);
-    loginAllaPage.fillPasswordField("jij09i");
-    loginAllaPage.clickLoginButton();
-    loginAllaPage.waitForLoginPageIsLoaded();
+    loginAllaPage.waitForLoginPageIsLoaded()
+            .fillLoginField(ADM_LOG)
+            .fillPasswordField("jij09i")
+            .clickLoginButton()
+            .waitForLoginPageIsLoaded();
     Assert.assertTrue(loginAllaPage.isOnLoginPage());
 
   }
