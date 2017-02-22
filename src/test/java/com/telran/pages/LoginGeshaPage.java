@@ -22,11 +22,11 @@ public class LoginGeshaPage extends Page {
 
   @FindBy(id = "pass")
   WebElement PassField;
-
   @FindBy(id = "button")
   WebElement loginButton;
 
   @FindBy(id = "managementList")
+
   WebElement managementList;
 
   @FindBy(id = "surveysList")

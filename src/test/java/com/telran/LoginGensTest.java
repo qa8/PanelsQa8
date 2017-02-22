@@ -7,10 +7,6 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
-//import com.telran.pages.HomePage;
-
-
-//import com.telran.SampleTestNgTest;
 
 public class LoginGensTest extends TestNgTestBase {
 
@@ -18,7 +14,7 @@ public class LoginGensTest extends TestNgTestBase {
 
     public CompaniesGeshaPage companiesGeshaPage;
 
-    // private HomePage homepage;
+
 
     @BeforeMethod
     public void initPageObjects() {
@@ -46,6 +42,6 @@ public class LoginGensTest extends TestNgTestBase {
         loginGeshaPage.fillPasswordField("12345");
         loginGeshaPage.pressLoginButton();
         companiesGeshaPage.waitForCompaniesPageInLoaded();
-        Assert.assertTrue(companiesGeshaPage.isOnCompaniesPage);
+        Assert.assertTrue(companiesGeshaPage.isOnCompaniesPage());
     }
 }
