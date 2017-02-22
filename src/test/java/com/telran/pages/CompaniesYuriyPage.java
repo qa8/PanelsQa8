@@ -6,6 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+
 /**
  * Created on 10.02.2017.
  */
@@ -33,7 +34,7 @@ public class CompaniesYuriyPage extends Page {
     @FindBy(id = "alertsBtn")
     public WebElement alertButton;
 
-    @FindBy(id = "quit")
+    @FindBy(xpath = "//*[@id='quit']")
     public WebElement logoutButton;
 
     //ElementsBlock for wait method
@@ -58,15 +59,26 @@ public class CompaniesYuriyPage extends Page {
     public WebElement selectLanguage;
 
 
+    @FindBy(xpath = ".//*[@id='menu']/header/div[2]/span[1]")
+    public WebElement EnglischLanguageDisplayed;
+
+
+    @FindBy(xpath = ".//*[@id='menu']/header/div[2]/span[1]")
+    public WebElement HebrewLanguageDisplayed;
+
+
     public CompaniesYuriyPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
+
+
     }
     //methods
 
     public void waitForCompaniesPageInLoaded() {
         waitUntilIsLoadedCustomTime(tadiranProjectButton, 30);
     }
+
 
     public boolean isOnCompaniesPage() {
         return exists(tadiranProjectButton);
@@ -119,19 +131,23 @@ public class CompaniesYuriyPage extends Page {
     }
 
     public void selectEnglishLanguage() {
-        selectValueInDropdownbyText(selectLanguage, "English");
+        selectValueInDropdown(selectLanguage, "en");
     }
 
     public void selecthebrewLanguage() {
-        selectValueInDropdownbyText(selectLanguage, "עברית");
+        selectValueInDropdown(selectLanguage, "he");
     }
 
     public void EnglishLanguageIsSelected() {
-        verifyText(selectLanguage, "English");
+        verifyText(EnglischLanguageDisplayed, "Companies");
 
     }
 
     public void HebrewLanguageIsSelected() {
-        verifyText(selectLanguage, "עברית");
+        verifyText(HebrewLanguageDisplayed, "חברות");
+    }
+
+    public void CheckLogOutButton() {
+        clickElement(logoutButton);
     }
 }
