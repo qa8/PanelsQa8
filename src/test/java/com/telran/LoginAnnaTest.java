@@ -117,18 +117,4 @@ public class LoginAnnaTest extends TestNgTestBase {
         Assert.assertTrue(loginPage.isAlertDisplayed());
     }
 
-    @Test
-    public void positiveLoginTestVika() {
-        driver.get(url);
-        loginPage.waitForLoginPageLoaded();
-
-        loginPage.fillLoginField(rightUsername);
-        loginPage.fillPasswordField(rightPassword);
-
-        loginPage.pressLoginButton();
-//        loginPage.waitUntilIsLoadedCustomTime(companiesAnna.tadiranProjectButton, 30);
-        loginPage.waitUntilIsLoadedCustomTime(companiesAnna.diklaProjectButton, 30);
-//        Assert.assertTrue(companiesAnna.isCompaniesButtonPresent());
-        Assert.assertTrue(companiesAnna.isDiklaProgectPresent());
-    }
 }
