@@ -7,6 +7,7 @@ import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
+
 /**
  * Created by Comp on 2/19/2017.
  */
@@ -48,5 +49,18 @@ public class TestYuriyCompanies extends TestNgTestBase {
         companiesYuriyPage.selecthebrewLanguage();
         companiesYuriyPage.HebrewLanguageIsSelected();
     }
-}
 
+    @Test
+    public void CheckLogOutButton() {
+        driver.get("https://greengnome.github.io/panels/?#/login");
+        loginYuriyPage.waitForLoginPageIsLoaded();
+        loginYuriyPage.fillLoginField("admin");
+        loginYuriyPage.fillPasswordField("12345");
+        loginYuriyPage.pressLoginButton();
+        companiesYuriyPage.waitForCompaniesPageInLoaded();
+        Assert.assertTrue(companiesYuriyPage.isOnCompaniesPage());
+        companiesYuriyPage.CheckLogOutButton();
+        Assert.assertTrue(loginYuriyPage.isOnLoginPage());
+
+    }
+}

@@ -1,9 +1,5 @@
 package com.telran.pages;
 
-/**
- * Created by Comp on 2/19/2017.
- */
-
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -35,6 +31,9 @@ public class LoginYuriyPage extends Page {
     @FindBy(xpath = "//*[@id='menu']/main/div/div/div/div[2]/hgroup/h1")
     WebElement WelcomToPanelsText;
 
+    @FindBy(xpath = "//h1[Contains(Text(),'Welcome to Panels inc.')]")
+    WebElement WelcomToPanels;
+
     public LoginYuriyPage(WebDriver driver) {
         super(driver);//наследуем от супер-класса
         PageFactory.initElements(driver, this);
@@ -63,6 +62,9 @@ public class LoginYuriyPage extends Page {
         return exists(loginButton);
     }
 
+    public void waitForLoginPageIsLoaded2() {
+        waitUntilIsLoadedCustomTime(WelcomToPanels, 30);
+    }
+
 
 }
-
