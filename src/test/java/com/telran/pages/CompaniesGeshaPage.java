@@ -33,6 +33,9 @@ public class CompaniesGeshaPage extends Page {
     public boolean isOnCompaniesPage;
     private boolean onCompaniesPage;
 
+    @FindBy(xpath = "//select[@ng-model='selectedLanguage']")
+    public WebElement selectLanguage;
+
 
     public CompaniesGeshaPage(WebDriver driver) {
         super(driver);
@@ -63,10 +66,13 @@ public class CompaniesGeshaPage extends Page {
 
     public static void waitForCompaniesPageInLoaded() {
     }
-
-
     public boolean isOnCompaniesPage() {
-        
         return onCompaniesPage;
+    }
+    public void selectEnglishLanguege(){
+        selectValueInDropdownbyText(selectLanguage,"English");
+    }
+    public void SelectLanguageHebrewLanguage(){
+        selectValueInDropdownbyText(selectLanguage,"עברית");
     }
 }
