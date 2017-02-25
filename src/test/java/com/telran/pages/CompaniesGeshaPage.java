@@ -1,5 +1,6 @@
 package com.telran.pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.CacheLookup;
@@ -17,21 +18,47 @@ public class CompaniesGeshaPage extends Page {
     public WebElement header;
 
     @FindBy(id = "managementList")
-    WebElement managementListButton;
+    public WebElement managementButton;
+
+    @FindBy(xpath = "//*[for='managementList']")
+    public WebElement managementList;
 
     @FindBy(id = "surveysList")
-    WebElement surveysListButton;
+    public WebElement surveysButton;
+
+    @FindBy(xpath = "//*[for='surveysList']")
+    public WebElement surveysList;
 
     @FindBy(id = "reportsList")
-    WebElement reportsListButton;
+    public WebElement reportsButton;
+
+    @FindBy(xpath = "//*[for='reportsList']")
+    public WebElement reportsList;
 
     @FindBy(id = "alertsBtn")
-    WebElement alertsBtnButton;
+    public WebElement alertButton;
 
     @FindBy(id = "quit")
-    WebElement quitButton;
-    public boolean isOnCompaniesPage;
-    private boolean onCompaniesPage;
+    public WebElement logoutButton;
+
+    //ElementsBlock for wait method
+    @FindBy(xpath = "//*[@class='adminMenu']")
+    public WebElement adminMenuBlock;
+    private boolean isOnCompaniesPage;
+
+    //tadiranProjectButton
+    @FindBy(xpath = "//*[contains(@style,'tadiran')]/..//a")
+    public WebElement tadiranbyNameProjectButton;
+
+    @FindBy(xpath = "//*[@class='mdl-grid']/div[1]//a")
+    public WebElement tadiranProjectButton;
+
+    //diklaProjectButton
+    @FindBy(xpath = "//*[@class='mdl-grid']/div[2]//a")
+    public WebElement clalitProjectButton;
+    //clalitProjectButton
+    @FindBy(xpath = "//*[@class='mdl-grid']/div[3]//a")
+    public WebElement diklaProjectButton;
 
     @FindBy(xpath = "//select[@ng-model='selectedLanguage']")
     public WebElement selectLanguage;
@@ -41,38 +68,72 @@ public class CompaniesGeshaPage extends Page {
         super(driver);
         PageFactory.initElements(driver, this);
     }
+    //methods
 
-
-    public void clickOnManagementListButton() {
-        clickElement(managementListButton);
-
+    public void waitForCompaniesPageInLoaded() {
+        waitUntilIsLoadedCustomTime(tadiranProjectButton, 30);
     }
 
-    public void clickOnSurveysListButton() {
-        clickElement(surveysListButton);
-    }
-
-    public void clickOnReportsListButton() {
-        clickElement(reportsListButton);
-    }
-
-    public void clickOnAlertsBtnButton() {
-        clickElement(alertsBtnButton);
-    }
-
-    public void clickOnQuitButton() {
-        clickElement(quitButton);
-    }
-
-    public static void waitForCompaniesPageInLoaded() {
-    }
     public boolean isOnCompaniesPage() {
-        return onCompaniesPage;
+        return exists(tadiranProjectButton);
     }
-    public void selectEnglishLanguege(){
-        selectValueInDropdownbyText(selectLanguage,"English");
+
+    public void clickManagementButton() {
+        clickElement(managementButton);
     }
-    public void SelectLanguageHebrewLanguage(){
-        selectValueInDropdownbyText(selectLanguage,"עברית");
+
+    public void selectValueInDropdownManagement(String value) {
+        selectValueInDropdownbyText(managementList, value);
+    }
+
+    public void clickSurveysButton() {
+        clickElement(surveysButton);
+    }
+
+    public void selectValueInDropdownSurveys(String value) {
+        selectValueInDropdownbyText(surveysList, value);
+    }
+
+    public void clickReportsButton() {
+
+        clickElement(reportsButton);
+    }
+
+    public void selectValueInDropdownReports(String value) {
+        selectValueInDropdownbyText(reportsList, value);
+    }
+
+    public void clickAlertButton() {
+        clickElement(alertButton);
+    }
+
+    public void clickTadiranProjectButton() {
+        clickElement(tadiranProjectButton);
+    }
+
+    public void clickProjectButtonbyName(String company) {
+        String s = "//h2[contains(Text(),'" + company + "')]/../..//a";
+        driver.findElement(By.xpath(s)).click();
+
+    }
+
+    public void clickClalitProjectButton() {
+        clickElement(clalitProjectButton);
+    }
+
+    public void clickDiclaProjectButton() {
+        clickElement(diklaProjectButton);
+    }
+
+    public void selectEnglishLanguage() {
+        selectValueInDropdownbyText(selectLanguage, "English");
+    }
+
+    public void selecthebrewLanguage() {
+        selectValueInDropdownbyText(selectLanguage, "עברית");
+    }
+
+    public void setOnCompaniesPage(boolean onCompaniesPage) {
+        isOnCompaniesPage = onCompaniesPage;
     }
 }
