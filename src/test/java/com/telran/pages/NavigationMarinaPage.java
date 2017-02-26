@@ -18,9 +18,9 @@ public class NavigationMarinaPage extends Page{
     @FindBy(id = "managementList")
     public WebElement managementList;
 
-    @FindBy(xpath = "//*[@for='managementList']/li[@ui-sref=\"createcompany\"]")
+    @FindBy(xpath = "//*[@for='managementList']/li[@ui-sref='createcompany']")
     public WebElement managementListCreateCompany;
-    @FindBy(xpath = "//*[@for='managementList']/li[@ui-sref=\"createproject\"]")
+    @FindBy(xpath = "//*[@for='managementList']/li[@ui-sref='createproject']")
     public WebElement managementListCreateProject;
     @FindBy(xpath = "//*[@for='managementList']/li[3]")
     public WebElement managementListEditCompany;
@@ -52,8 +52,14 @@ public class NavigationMarinaPage extends Page{
     public WebElement logoutButton;
 
     //language selector defining -----------------
-    @FindBy(xpath = "//select[@ng-model='selectedLanguage']")
+    /*@FindBy(xpath = "//select[@ng-model='selectedLanguage']")
     public WebElement languageSelector;
+
+    @FindBy(xpath = "//select[@ng-model='selectedLanguage']/option[@value='he']")
+    public String hebrewLang;
+    @FindBy(xpath = "//select[@ng-model='selectedLanguage']/option[@value='en']")
+    public String englishLang;
+    */
 
     //methods
     public void clickEditCompany() {
@@ -86,13 +92,13 @@ public class NavigationMarinaPage extends Page{
     public void clickOnLogoutButton() {
         clickElement(logoutButton);
     }
-    public void chooseEngishLanguage(){
+   /* public void chooseEngishLanguage(){
         languageSelector.click();
-        selectValueInDropdownbyText(languageSelector,"English");
+        selectValueInDropdownbyText(languageSelector,englishLang);
     }
     public void chooseHebrewLanguage(){
-        selectValueInDropdownbyText(languageSelector,"עברית");
-    }
+        selectValueInDropdownbyText(languageSelector,hebrewLang);
+    }*/
 
     public void waitManagementListIsLoaded(){
         waitUntilIsLoaded(managementList);
@@ -100,6 +106,13 @@ public class NavigationMarinaPage extends Page{
         waitUntilIsLoaded(managementListCreateProject);
         waitUntilIsLoaded(managementListEditCompany);
         waitUntilIsLoaded(managementListEditProject);
+    }
+    public void waitManagementListIsLoadedTime50(){
+        waitUntilIsLoadedCustomTime(managementList,50);
+       // waitUntilIsLoadedCustomTime(managementListCreateCompany,50);
+       //waitUntilIsLoadedCustomTime(managementListCreateProject,50);
+       // waitUntilIsLoadedCustomTime(managementListEditCompany,50);
+        //waitUntilIsLoadedCustomTime(managementListEditProject,50);
     }
 
     public void waitSurveyListIsLoaded(){
