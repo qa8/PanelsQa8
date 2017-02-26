@@ -14,25 +14,23 @@ public class LoginAllaTest extends TestNgTestBase {
 
   public LoginAllaPage loginAllaPage;
   public CompaniesAllaPage companiesAllaPage;
-
   @BeforeMethod
   public void initPageObjects() {
     loginAllaPage = PageFactory.initElements(driver, LoginAllaPage.class);
     companiesAllaPage = PageFactory.initElements(driver, CompaniesAllaPage.class);
-  }
 
+  }
   @Test//incorrect login
   public void negativeLoginTest1() {
     driver.get(URL_LOG);
-    loginAllaPage.waitForLoginPageIsLoaded();
-    loginAllaPage.fillLoginField("pppp");
-    loginAllaPage.fillPasswordField(ADM_PSW);
-    loginAllaPage.clickLoginButton();
-    loginAllaPage.waitForLoginPageIsLoaded();
+    loginAllaPage.waitForLoginPageIsLoaded()
+            .fillLoginField("pppp")
+            .fillPasswordField(ADM_PSW)
+            .clickLoginButton()
+            .waitForLoginPageIsLoaded();
     Assert.assertTrue(loginAllaPage.isOnLoginPage());
 
   }
-
   @Test//incorrect password
   public void negativeLoginTest2() {
     driver.get(URL_LOG);
@@ -44,14 +42,9 @@ public class LoginAllaTest extends TestNgTestBase {
     Assert.assertTrue(loginAllaPage.isOnLoginPage());
 
   }
-
   @Test
   public void pozitiveLoginTest() {
-    driver.get(URL_LOG);
-    loginAllaPage.waitForLoginPageIsLoaded();
-    loginAllaPage.fillLoginField(ADM_LOG);
-    loginAllaPage.fillPasswordField(ADM_PSW);
-    loginAllaPage.clickLoginButton();
+    loginAllaPage.login(ADM_LOG, ADM_PSW);
     companiesAllaPage.waitForCompaniesPageInLoaded();
     Assert.assertTrue(companiesAllaPage.isOnCompaniesPage());
   }

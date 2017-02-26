@@ -34,7 +34,6 @@ public class LoginAllaPage extends Page {
 
   //methods
   public LoginAllaPage fillLoginField(String text) {
-
     setElementText(loginField, text);
     return this;
   }
@@ -55,8 +54,19 @@ public class LoginAllaPage extends Page {
     waitUntilIsLoadedCustomTime(pleaseLogInheader, 40);
     return this;
   }
-
   public boolean isOnLoginPage() {
     return exists(pleaseLogInheader);
+  }
+
+  public void login(String username, String password) {
+    openloginpage();
+    waitForLoginPageIsLoaded();
+    fillLoginField(username);
+    fillPasswordField(password);
+    clickLoginButton();
+  }
+
+  public void openloginpage() {
+    driver.get("https://greengnome.github.io/panels/?#/login");
   }
 }
