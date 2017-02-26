@@ -13,9 +13,17 @@
         <processorPath useClasspath="true" />
         <module name="Panels" />
       </profile>
+      <profile default="false" name="Annotation profile for panels" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <processorPath useClasspath="true" />
+        <module name="panels" />
+      </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="Panels" target="1.6" />
+      <module name="panels" target="1.6" />
     </bytecodeTargetLevel>
   </component>
 </project>
