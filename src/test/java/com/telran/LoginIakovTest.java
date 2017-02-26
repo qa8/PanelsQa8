@@ -35,7 +35,7 @@ public class LoginIakovTest extends TestNgTestBase {
         loginIakovPage.fillLoginField("admin");
         loginIakovPage.fillPasswordField("12345");
         loginIakovPage.pressLoginButton();
-        companiesIakovPage.waitForCompaniesPageInLoaded();
+        companiesIakovPage.waitForCompaniesPageIsLoaded();
         Assert.assertTrue(companiesIakovPage.isOnCompaniesPage());
 
     }

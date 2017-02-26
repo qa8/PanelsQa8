@@ -1,5 +1,7 @@
 package com.telran.pages;
 
+import com.telran.LogLog4j;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -11,7 +13,7 @@ import org.openqa.selenium.support.PageFactory;
  * Created on 10.02.2017.
  */
 public class CompaniesIakovPage extends Page {
-
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
     @FindBy(id = "managementList")
     public WebElement managementButton;
@@ -69,11 +71,13 @@ public class CompaniesIakovPage extends Page {
     }
     //methods
 
-    public void waitForCompaniesPageInLoaded() {
+    public void waitForCompaniesPageIsLoaded() {
+        Log.info("Waiting for Companies page load");
         waitUntilIsLoadedCustomTime(tadiranProjectButton, 30);
     }
 
     public boolean isOnCompaniesPage() {
+        Log.info("Checking if we are in companies page");
         return exists(tadiranProjectButton);
     }
 
