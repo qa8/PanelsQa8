@@ -82,3 +82,5 @@ buildNumber.properties
 /Panels.iml
 /pom.xml
 /.gitignore
+/src/test/resources/debug.properties
+/src/test/resources/testng.xml

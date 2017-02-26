@@ -28,7 +28,7 @@ public class LoginIakovTest extends TestNgTestBase {
         Assert.assertTrue(loginIakovPage.isOnLoginPage());
     }
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void positivelogintest() {
         driver.get("https://greengnome.github.io/panels/?#/login");
         loginIakovPage.waitForLoginPageIsLoaded();
