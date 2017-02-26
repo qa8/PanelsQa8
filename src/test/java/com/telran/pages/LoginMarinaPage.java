@@ -32,22 +32,27 @@ public class LoginMarinaPage extends Page {
     }
 
     //methods
-    public void fillLoginField(String text) {
+    public LoginMarinaPage fillLoginField(String text) {
         this.setElementText(loginField, text);
+        return this;
     }
 
-    public void fillPassField(String text) {
+    public LoginMarinaPage fillPassField(String text) {
         this.setElementText(passwordField, text);
+        return this;
     }
 
-    public void clickOnLoginButton() {
+    public LoginMarinaPage clickOnLoginButton() {
         this.clickElement(loginButton);
+        return this;
     }
-    public void waitForLoginPageIsLoaded() {
+    public LoginMarinaPage waitForLoginPageIsLoaded() {
         waitUntilIsLoaded(loginButton);
+        return this;
     }
-    public void waitForLoginPageIsLoadedTime50() {
+    public LoginMarinaPage waitForLoginPageIsLoadedTime50() {
         waitUntilIsLoadedCustomTime(loginButton, 50);
+        return this;
     }
 
     public boolean isOnLoginPage(){
