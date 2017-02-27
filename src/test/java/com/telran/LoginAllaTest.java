@@ -20,7 +20,8 @@ public class LoginAllaTest extends TestNgTestBase {
     companiesAllaPage = PageFactory.initElements(driver, CompaniesAllaPage.class);
 
   }
-  @Test//incorrect login
+
+  @Test(groups = {"smoke", "regression"})
   public void negativeLoginTest1() {
     driver.get(URL_LOG);
     loginAllaPage.waitForLoginPageIsLoaded()
@@ -31,7 +32,8 @@ public class LoginAllaTest extends TestNgTestBase {
     Assert.assertTrue(loginAllaPage.isOnLoginPage());
 
   }
-  @Test//incorrect password
+
+  @Test(groups = {"smoke", "regression"})
   public void negativeLoginTest2() {
     driver.get(URL_LOG);
     loginAllaPage.waitForLoginPageIsLoaded()
@@ -42,7 +44,8 @@ public class LoginAllaTest extends TestNgTestBase {
     Assert.assertTrue(loginAllaPage.isOnLoginPage());
 
   }
-  @Test
+
+  @Test(groups = {"smoke", "regression"})
   public void pozitiveLoginTest() {
     loginAllaPage.login(ADM_LOG, ADM_PSW);
     companiesAllaPage.waitForCompaniesPageInLoaded();
