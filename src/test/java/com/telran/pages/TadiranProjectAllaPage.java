@@ -27,15 +27,17 @@ public class TadiranProjectAllaPage extends Page {
 
 
     //methods
-    public void waitForProjectPageIsLoaded() {
+    public TadiranProjectAllaPage waitForProjectPageIsLoaded() {
         waitUntilIsLoadedCustomTime(tadiranProjectHeader, 40);
+        return this;
     }
 
     public boolean isOnTadiranProjectPage() {
         return exists(tadiranProjectHeader);
     }
 
-    public void clickHomeButton() {
+    public TadiranProjectAllaPage clickHomeButton() {
         clickElement(homeButton);
+        return this;
     }
 }
