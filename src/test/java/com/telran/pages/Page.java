@@ -8,16 +8,23 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
 import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.charset.CharsetEncoder;
 import java.util.concurrent.ThreadLocalRandom;
 /**
  * Abstract class representation of a Page in the UI. Page object pattern
  */
 public abstract class Page {
+
+  //"ISO-8859-1" for ISO Latin 1, US-ASCII -for USA, CP862 for hebrew
+  static CharsetEncoder asciiEncoderHE =
+          Charset.forName("CP862").newEncoder();
+  static CharsetEncoder asciiEncoderEN =
+          Charset.forName("US-ASCII").newEncoder();
   //public static String baseUrl = TestNgTestBase.baseUrl;
   public String PAGE_URL;
   public String PAGE_TITLE;
   public WebDriver driver;
-
   /*
    * Constructor injecting the WebDriver interface
    *
@@ -32,6 +39,17 @@ public abstract class Page {
     return element.isDisplayed();
 
 
+  }
+
+  public static boolean isPureAscii(String language, String v) {
+    switch (language.toLowerCase()) {
+      case "he":
+        return (asciiEncoderHE.canEncode(v) && !asciiEncoderEN.canEncode(v));
+      case "en":
+        return asciiEncoderEN.canEncode(v);
+      default:
+        return false;
+    }
   }
 
   public void goBackBrowserButton() {
