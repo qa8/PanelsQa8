@@ -39,4 +39,5 @@ public class LoginIakovTest extends TestNgTestBase {
         Assert.assertTrue(companiesIakovPage.isOnCompaniesPage());
 
     }
+
 }
