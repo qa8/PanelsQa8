@@ -1,5 +1,7 @@
 package com.telran.pages;
 
+import com.telran.LogLog4j;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -10,8 +12,20 @@ import org.openqa.selenium.support.PageFactory;
  * Created by Andrey on 16.02.2017.
  */
 public class LeftMenuAllaPage extends Page {
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     @FindBy(how = How.TAG_NAME, using = "h1")
     public WebElement header;
+    @FindBy(xpath = "//div[@class='mdl-layout__drawer-button']")
+    public WebElement topMenuButton;
+
+    @FindBy(xpath = "//div[@class='mdl-layout__drawer'][@aria-hidden='false']")
+    public WebElement leftMenuVisible;
+
+    @FindBy(xpath = "//div[@class='mdl-layout__drawer'][@aria-hidden='true']")
+    public WebElement leftMenuHidden;
+
+    @FindBy(xpath = "//*[@class='mdl-grid']")
+    public WebElement page;
 
     @FindBy(xpath = "//*[@class='adminMenu']")
     public WebElement adminMenuBlock;
@@ -48,40 +62,62 @@ public class LeftMenuAllaPage extends Page {
     }
 
     //methods
-    public void waitForleftMenuInLoaded() {
-        waitUntilIsLoadedCustomTime(adminMenuBlock, 40);
+    public LeftMenuAllaPage clickOnTopMenuButton() {
+        Log.info("Clicking left menu top-button");
+        if (!exists(managementButton)) {
+            clickElement(topMenuButton);
+        }
+        return this;
     }
 
-    public void clickManagementButton() {
+    public LeftMenuAllaPage waitForleftMenuInLoaded() {
+        Log.info("Waiting for left menu load");
+        waitUntilIsLoaded(adminMenuBlock);
+        return this;
+    }
+
+    public LeftMenuAllaPage clickManagementButton() {
+        Log.info("Clicking to management button");
         clickElement(managementButton);
+        return this;
     }
 
-    public void clickCreateCompanyItemInDropdownManagement() {
+    public LeftMenuAllaPage clickCreateCompanyItemInDropdownManagement() {
+        Log.info("Clicking to create company item");
         clickElement(createCompanyItem);
+        return this;
     }
 
-    public void waitForCreateCompanyPageIsDisplayed() {
+    public LeftMenuAllaPage waitForCreateCompanyPageIsDisplayed() {
+        Log.info("Waiting for create company page");
         waitUntilIsLoaded(createCompanyHeader);
+        return this;
     }
 
     public boolean isOnCreateCompanyPage() {
+        Log.info("Checking that we are in create company page");
         return exists(createCompanyHeader);
     }
 
     public boolean viewReportsItemIsPresent() {
+        Log.info("Checking that view reports item is present in drop-down");
         return exists(viewReportsItem);
     }
 
-    public void clickLogoutButton() {
+    public LeftMenuAllaPage clickLogoutButton() {
+        Log.info("Clicking to logout button");
         clickElement(logoutButton);
+        return this;
     }
 
     public void clickViewReportsInDropDownReports() {
         clickElement(viewReportsItem);
     }
 
-    public void clickReportsButton() {
+    public LeftMenuAllaPage clickReportsButton() {
+        Log.info("Clicking to reports button");
         clickElement(reportsButton);
+        return this;
     }
 
     public void clickSurveysButton() {
