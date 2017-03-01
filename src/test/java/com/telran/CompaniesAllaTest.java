@@ -10,7 +10,6 @@ import org.testng.annotations.Test;
 
 public class CompaniesAllaTest extends TestNgTestBase {
 
-  //private static final String URL_LOG = "https://greengnome.github.io/panels/?#/login";
   private static final String ADM_LOG = "admin";
   private static final String ADM_PSW = "12345";
 
@@ -27,13 +26,15 @@ public class CompaniesAllaTest extends TestNgTestBase {
     loginAllaPage.login(ADM_LOG, ADM_PSW);
     companiesAllaPage.waitForCompaniesPageInLoaded();
     }
-  @Test
+
+  @Test(groups = {"regression"})
   public void tadiranProjectButtonTest() {
     companiesAllaPage.clickTadiranProjectButton();
     tadiranProjectAllaPage.waitForProjectPageIsLoaded();
     Assert.assertTrue(tadiranProjectAllaPage.isOnTadiranProjectPage());
   }
-  @Test
+
+  @Test(groups = {"regression"})
   public void homeButtonTest() {
     companiesAllaPage.clickTadiranProjectButton();
     tadiranProjectAllaPage.waitForProjectPageIsLoaded()
@@ -41,15 +42,17 @@ public class CompaniesAllaTest extends TestNgTestBase {
     companiesAllaPage.waitForCompaniesPageInLoaded();
     Assert.assertTrue(companiesAllaPage.isOnCompaniesPage());
   }
-  @Test
+
+  @Test(groups = {"regression"})
   public void selectEnglishLanguageTest() {
     companiesAllaPage.selectEnglishLanguage();
     Assert.assertTrue(companiesAllaPage.languageisEnglish());
   }
 
-  @Test
+  @Test(groups = {"regression"})
   public void selectHebrewLanguageTest() {
     companiesAllaPage.selecthebrewLanguage();
+    companiesAllaPage.waitForCompaniesPageInLoaded();
     Assert.assertTrue(companiesAllaPage.languageisHebrew());
   }
 }
