@@ -73,6 +73,6 @@ public class LoginAllaPage extends Page {
   }
 
   public void openloginpage() {
-    driver.get("https://greengnome.github.io/panels/?#/login");
+    driver.get("https://greengnome.github.io/panels");
   }
 }
