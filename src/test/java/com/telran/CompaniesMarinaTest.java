@@ -16,8 +16,6 @@ public class CompaniesMarinaTest extends TestNgTestBase {
     private static final String LOGIN_ADM ="Admin" ;
     private static final String[] ARRAY_COMPANIES = {"Tadiran","Clalit", "Dikla"};
 
-
-
     private LoginMarinaPage loginMarinaPage;
     private CompaniesMarinaPage companiesMarinaPage;
     private NavigationMarinaPage navigationMarinaPage;
@@ -77,19 +75,48 @@ public class CompaniesMarinaTest extends TestNgTestBase {
         Assert.assertTrue(ARRAY_COMPANIES.length==count);
     }
 
-    // it doesn't work; I cannot receive text from managementListCreateCompany, for ex
+    // It verifies that ManagementList on Navigation Page exits on English
     @Test
-    public void positiveCompaniesPageLSNavigationMenuEnglish() {
+    public void positiveCompaniesPageLSNavigationMenuManagementListEnglish() {
         headerMarinaPage.chooseEnglishLanguage();
-        //????
-        System.out.println(navigationMarinaPage.managementList.getText());
-        if(navigationMarinaPage.managementListCreateCompany.getText().isEmpty()) System.out.println("empty");
-        else {System.out.println("notEmpty"+navigationMarinaPage.managementListCreateCompany.getText());}
-       Assert.assertTrue(companiesMarinaPage.isPureAscii("He", navigationMarinaPage.managementListCreateCompany.getText()));
-        System.out.println(navigationMarinaPage.managementListEditCompany.getText());
-        System.out.println(navigationMarinaPage.managementListCreateProject.getText());
-        System.out.println(navigationMarinaPage.managementListEditProject.getText());
+        this.languageMenuNavigationVerification("En");
+    }
 
+    // It verifies that ManagementList on Navigation Page exits on Hebrew
+    @Test
+    public void positiveCompaniesPageLSNavigationMenuManagementListHebrew() {
+        headerMarinaPage.chooseHebrewLanguage();
+        this.languageMenuNavigationVerification("He");
+    }
+
+
+
+
+    public void languageMenuNavigationVerification(String language){
+        int count=0;
+
+        navigationMarinaPage.clickMenuManagement()
+                .waitManagementListIsLoaded();
+        if (navigationMarinaPage.isMenuManagementOnLanguage(language)) count++;
+        if (navigationMarinaPage.isCreateCompanyManagementOnLanguage(language)) count++;
+        if (navigationMarinaPage.isCreateProjectManagementOnLanguage(language)) count++;
+        if (navigationMarinaPage.isEditCompanyManagementOnLanguage(language)) count++;
+        if (navigationMarinaPage.isEditProjectOnLanguage(language)) count++;
+        navigationMarinaPage.clickCloseMenuManagement()
+                .clickMenuSurveys()
+                .waitSurveysListIsLoaded();
+        if (navigationMarinaPage.isMenuSurveysOnLanguage(language)) count++;
+        if (navigationMarinaPage.isCreateSurveyOnLanguage(language)) count++;
+        if (navigationMarinaPage.isEditSurveyOnLanguage(language)) count++;
+        navigationMarinaPage.clickCloseMenuSurveys()
+                .clickMenuReports()
+                .waitReportsListIsLoaded();
+        if (navigationMarinaPage.isMenuReportsOnLanguage(language)) count++;
+        if (navigationMarinaPage.isViewReportsOnLanguage(language)) count++;
+        if (navigationMarinaPage.isExportReportsOnLanguage(language)) count++;
+        navigationMarinaPage.clickCloseMenuReports();
+        if (navigationMarinaPage.isLogoutButtonOnLanguage(language))count++;
+        Assert.assertTrue(count==12);
     }
 
 }
