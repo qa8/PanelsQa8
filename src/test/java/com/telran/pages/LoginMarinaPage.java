@@ -1,6 +1,6 @@
 package com.telran.pages;
 
-import com.panel.LogLog4j;
+import com.telran.LogLog4j;
 import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
