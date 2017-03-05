@@ -9,14 +9,12 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CompaniesAllaTest extends TestNgTestBase {
-
   private static final String ADM_LOG = "admin";
   private static final String ADM_PSW = "12345";
-
   public CompaniesAllaPage companiesAllaPage;
   public LoginAllaPage loginAllaPage;
   public TadiranProjectAllaPage tadiranProjectAllaPage;
-
+  String projectName = "Tadiran";
 
   @BeforeMethod
   public void initPageObjects() {
@@ -24,11 +22,13 @@ public class CompaniesAllaTest extends TestNgTestBase {
     loginAllaPage = PageFactory.initElements(driver, LoginAllaPage.class);
     tadiranProjectAllaPage = PageFactory.initElements(driver, TadiranProjectAllaPage.class);
     loginAllaPage.login(ADM_LOG, ADM_PSW);
-    companiesAllaPage.waitForCompaniesPageInLoaded();
+    companiesAllaPage.waitForCompaniesPageInLoaded2();
     }
 
   @Test(groups = {"regression"})
   public void tadiranProjectButtonTest() {
+    //companiesAllaPage.getTextFromBloc();
+    companiesAllaPage.headerCompanyIsPresent("Tadiran");
     companiesAllaPage.clickTadiranProjectButton();
     tadiranProjectAllaPage.waitForProjectPageIsLoaded();
     Assert.assertTrue(tadiranProjectAllaPage.isOnTadiranProjectPage());
