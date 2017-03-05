@@ -39,7 +39,7 @@ public class LoginMarinaTest extends TestNgTestBase {
                         .fillPassField("pppp")
                         .clickOnLoginButton()
                         .waitForLoginPageIsLoaded();
-        Assert.assertTrue(loginMarinaPage.isOnLoginPage());
+        Assert.assertTrue(loginMarinaPage.isOnLoginPage(),"Not passed. User is not on login page");
     }
 
     @Test
@@ -50,23 +50,20 @@ public class LoginMarinaTest extends TestNgTestBase {
                         .clickOnLoginButton();
         //companiesMarinaPage.waitForCompanyLoaded("Tadiran"); - it doesn't work (with dynamic element)
         companiesMarinaPage.waitForTadiranProjectLoaded();
-        Assert.assertTrue(loginMarinaPage.isOnLoginPage());
+        Assert.assertTrue(loginMarinaPage.isOnLoginPage(), "Not passed. User is not on login page");
     }
 
 
     @Test
     public void positiveAdminLoginTest() throws InterruptedException {
-
         loginMarinaPage.fillLoginField(LOGIN_ADM)
                         .fillPassField(PSW_ADM)
                         .clickOnLoginButton();
         //companiesMarinaPage.waitForCompanyLoaded(NAME_COMPANY);// - it doesn't work (with dynamic element)
-        navigationMarinaPage.waitManagementListIsLoadedTime50();
-        headerMarinaPage.waitHeaderIsLoaded();
-        companiesMarinaPage.waitForTadiranProjectLoaded();
-        companiesMarinaPage.isCompanyOnCompaniesPage("Tadiran");
+        companiesMarinaPage.waitForCompanyLoadedByName(NAME_COMPANY)
+                        .isCompanyOnCompaniesPage("Tadiran");
 
-        Assert.assertTrue(companiesMarinaPage.isCompanyOnCompaniesPage("Tadiran"));
+        Assert.assertTrue(companiesMarinaPage.isCompanyOnCompaniesPage("Tadiran"),"Not passed. User is not on companies page");
 
 
     }
