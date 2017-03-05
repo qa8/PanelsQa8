@@ -63,7 +63,11 @@ public class CompaniesIakovPage extends Page {
     @FindBy(xpath = "//*[@id='menu']/header/div[2]/span[1]")
     public WebElement companyLabel;
 
+    @FindBy(xpath = "//divb[1]")
+    public WebElement projectBlock;
 
+    @FindBy(xpath = "//*[@id='menu']/header/div[2]/span[2]")
+    public WebElement projectNameLabel;
 
     public CompaniesIakovPage(WebDriver driver) {
         super(driver);
@@ -76,6 +80,10 @@ public class CompaniesIakovPage extends Page {
         waitUntilIsLoadedCustomTime(tadiranProjectButton, 30);
     }
 
+    public void waitForProjectPageisLoaded() {
+        Log.info("Waiting for Project page load");
+        waitUntilIsLoadedCustomTime(projectNameLabel, 30);
+    }
     public boolean isOnCompaniesPage() {
         Log.info("Checking if we are in companies page");
         return exists(tadiranProjectButton);
@@ -143,5 +151,21 @@ public class CompaniesIakovPage extends Page {
         return companyLabel.getText() == "חברות";
     }
 
+    public void getTextFromBloc() {
+        String w = projectBlock.getText();
+        Log.info("Text found is " + w);
+    }
+
+    public String getTextFromHeader() {
+        String w = projectNameLabel.getText();
+        w = w.toLowerCase();
+        Log.info("Text found is " + w);
+        return w;
+    }
+
+    public void clickOnSurweyOfProject(final String projectName) {
+        String locator = "//h2[text()='" + projectName + "']/../../..//a[@ng-click='goToSurvey(project.id, project.name)']";
+        driver.findElement(By.xpath(locator)).click();
+    }
 
 }

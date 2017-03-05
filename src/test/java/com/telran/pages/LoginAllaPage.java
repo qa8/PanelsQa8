@@ -36,15 +36,15 @@ public class LoginAllaPage extends Page {
   }
 
   //methods
-  public LoginAllaPage fillLoginField(String test) {
-    Log.info("Filling login field with " + test);
-    setElementText(loginField, test);
+  public LoginAllaPage fillLoginField(String text) {
+    Log.info("Filling login field with " + text);
+    setElementText(loginField, text);
     return this;
   }
 
-  public LoginAllaPage fillPasswordField(String test) {
-    Log.info("Filling password field with " + test);
-    setElementText(passwordField, test);
+  public LoginAllaPage fillPasswordField(String text) {
+    Log.info("Filling password field with " + text);
+    setElementText(passwordField, text);
     return this;
   }
 
@@ -73,6 +73,6 @@ public class LoginAllaPage extends Page {
   }
 
   public void openloginpage() {
-    driver.get("https://greengnome.github.io/panels/?#/login");
+    driver.get("https://greengnome.github.io/panels");
   }
 }

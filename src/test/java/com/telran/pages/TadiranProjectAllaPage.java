@@ -46,4 +46,5 @@ public class TadiranProjectAllaPage extends Page {
         clickElement(homeButton);
         return this;
     }
+
 }
