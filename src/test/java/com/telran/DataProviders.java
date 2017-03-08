@@ -13,9 +13,9 @@ import java.util.Random;
 public class DataProviders {
     //Takes data from file
     @DataProvider
-    public static Iterator<Object[]> loadPositiveRegDoctor() throws IOException {
+    public static Iterator<Object[]> negativeAdmin() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/positiveDoctorsReg.data")));
+                DataProviders.class.getResourceAsStream("/invalidLogin.data")));
 
         List<Object[]> userData = new ArrayList<Object[]>();
         String line = in.readLine();
