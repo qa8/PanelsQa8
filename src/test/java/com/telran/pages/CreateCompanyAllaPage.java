@@ -17,8 +17,17 @@ public class CreateCompanyAllaPage extends Page {
 
     public WebElement header;
 
-    @FindBy(xpath = "//div[1]/input[@type='text']")
+    @FindBy(id = "sample1")
     public WebElement companyNameField;
+
+    @FindBy(id = "sample2")
+    public WebElement companyOwnerField;
+
+    @FindBy(id = "sample3")
+    public WebElement telephoneNumberField;
+
+    @FindBy(xpath = "//form/button")
+    public WebElement addCompanyButton;
 
     public CreateCompanyAllaPage(WebDriver driver) {
         super(driver);
@@ -39,6 +48,17 @@ public class CreateCompanyAllaPage extends Page {
     public CreateCompanyAllaPage fillCompanyOwnerField(String text) {
         Log.info("Filling company owner field");
         setElementText(companyNameField, text);
+        return this;
+    }
+
+    public CreateCompanyAllaPage fillTelephoneNumberField(String text) {
+        Log.info("Filling company owner field");
+        setElementText(companyNameField, text);
+        return this;
+    }
+
+    public CreateCompanyAllaPage clickAddCompanyButton() {
+        clickElement(addCompanyButton);
         return this;
     }
 

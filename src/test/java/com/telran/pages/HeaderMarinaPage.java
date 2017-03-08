@@ -7,6 +7,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 
 public class HeaderMarinaPage extends Page{
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
@@ -27,6 +29,8 @@ public class HeaderMarinaPage extends Page{
     public String englishLang;
     @FindBy(xpath = ".//button [@ng-click='home()']")
     public WebElement goToHome;
+    @FindBy(xpath = ".//*[@class='mdl-layout-title ng-binding'][2]")
+    public WebElement projectHeader;
 
 
     //methods
@@ -46,6 +50,23 @@ public class HeaderMarinaPage extends Page{
     public void waitHeaderIsLoaded(){
         Log.info("Waiting  until header page is loaded ");
         waitUntilIsLoaded(goToHome);
+    }
+    public Boolean projectHeaderVerification(String projectName)  {
+        try {
+            waitUntilElementIsLoaded(projectHeader);
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        //if (exists(projectHeader)){
+            Log.info("projectHeader exists and text is:"+projectHeader.getText());
+            String str=projectName.toLowerCase();
+            Log.info("projectName.toLowerCase():"+str);
+            if (projectHeader.getText().toLowerCase().equalsIgnoreCase(projectName))
+                return true;
+        //}
+        return false;
     }
 
 }

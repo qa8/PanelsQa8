@@ -32,13 +32,19 @@ public class CreateCompanyAllaTest extends TestNgTestBase {
     }
 
     @Test(groups = {"regression"})
-    public void fillCompanyNameTest() {
+    public void addCompanyTest() {
         leftMenuAllaPage.clickOnTopMenuButton()
                 .clickManagementButton()
                 .waitForleftMenuInLoaded()
                 .clickCreateCompanyItemInDropdownManagement()
                 .waitForCreateCompanyPageIsDisplayed();
         createCompanyAllaPage.clickToCompanyNameField()
-                .fillCompanyNameField("dffhgv");
+                .fillCompanyNameField("dffhgv")
+                .fillCompanyOwnerField("kjhv")
+                .fillTelephoneNumberField("978750998")
+                .clickAddCompanyButton();
+        companiesAllaPage.waitForCompaniesPageInLoaded();
+        companiesAllaPage.isOnCompaniesPage();
+        companiesAllaPage.getTextFromBloc();
     }
 }

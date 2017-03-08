@@ -10,6 +10,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
 
+
 public class CompaniesMarinaPage extends  Page {
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
     //private String nameCompany="Tadiran";
@@ -27,35 +28,42 @@ public class CompaniesMarinaPage extends  Page {
     @FindBy(how = How.TAG_NAME, using = "h1")
     public WebElement header;
 
-    @FindBy(xpath="//h2[contains(text(),'"+"Tadiran"+"')]/../..//a")
+    @FindBy(xpath = "//h2[contains(text(),'" + "Tadiran" + "')]/../..//a")
     public WebElement projectButtonTadiran;
 
 
-
     //method
-    public void clickProjectButtonCompany(String nameCompany){
-        Log.info("Click to project button, company - "+nameCompany);
+    public void clickProjectButtonCompany(String nameCompany) {
+        Log.info("Click to project button, company - " + nameCompany);
         findCompanyProjectButton(nameCompany).click();
 
     }
-    public CompaniesMarinaPage clickProjectButtonTadiran(){
+
+    public CompaniesMarinaPage clickProjectButtonTadiran() {
         Log.info("Click to Tadiran project button");
         projectButtonTadiran.click();
         return this;
     }
-    public CompaniesMarinaPage waitForTadiranProjectLoaded(){
+
+    public CompaniesMarinaPage waitForTadiranProjectLoaded() {
         Log.info("Waiting until Tadiran company is loaded");
         waitUntilIsLoaded(projectButtonTadiran);
         return this;
     }
 
-    public CompaniesMarinaPage waitForCompanyLoaded(String nameCompany){
-        Log.info("Waiting until company is loaded (time 50) - "+nameCompany);
+    public CompaniesMarinaPage waitForCompanyLoaded(String nameCompany) {
+        Log.info("Waiting until company is loaded (time 50) - " + nameCompany);
         //System.out.println("method waitForCompanyLoaded");
-        waitUntilIsLoadedCustomTime(findCompanyProjectButton(nameCompany),50);
+        waitUntilIsLoadedCustomTime(findCompanyProjectButton(nameCompany), 50);
         //System.out.println("company is loaded");
         return this;
     }
+    public CompaniesMarinaPage waitForCompanyLoadedByName(String nameCompany){
+        String locator = "//h2[contains(text(),'"+nameCompany+"')]/../..//b";
+        waitAndFindWebElement(By.xpath(locator));
+        return this;
+    }
+
     public WebElement findCompanyProjectButton(String nameCompany){
         Log.info("Finding company - "+nameCompany);
         return driver.findElement(By.xpath("//h2[contains(text(),'"+nameCompany+"')]/../..//a"));
@@ -65,21 +73,7 @@ public class CompaniesMarinaPage extends  Page {
         Log.info("Verification: company exsts - "+nameCompany);
         return exists(findCompanyProjectButton(nameCompany));
     }
-    /*
-    //"ISO-8859-1" for ISO Latin 1, US-ASCII -for USA, CP862 for hebrew
-  static CharsetEncoder asciiEncoderHE =
-          Charset.forName("CP862").newEncoder();
-  static CharsetEncoder asciiEncoderEN =
-          Charset.forName("US-ASCII").newEncoder();
 
-  public static boolean isPureAscii(String language, String v) {
-    switch (language.toLowerCase()) {
-      case "he": return asciiEncoderHE.canEncode(v);
-      case "en": return asciiEncoderEN.canEncode(v);
-      default: return false;
-    }
-  }
-     */
     public String findCompanyProjectButtonText(String nameCompany){
         Log.info("Receiving text of company project button - "+nameCompany);
         return driver.findElement(By.xpath("//h2[contains(text(),'"+nameCompany+"')]/../..//b")).getText();

@@ -1,16 +1,18 @@
 package com.telran.pages;
 
+import com.google.common.base.Function;
 import org.openqa.selenium.*;
 import org.openqa.selenium.support.Color;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.Select;
-import org.openqa.selenium.support.ui.WebDriverWait;
+import org.openqa.selenium.support.ui.*;
 import org.testng.Assert;
 
 import java.io.IOException;
 import java.nio.charset.Charset;
 import java.nio.charset.CharsetEncoder;
+import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.concurrent.TimeUnit;
+
 /**
  * Abstract class representation of a Page in the UI. Page object pattern
  */
@@ -231,4 +233,46 @@ public abstract class Page {
     String cellColorAfterClick = Color.fromString(cell.getCssValue("background-color")).asHex();
     return !cellColorBeforeClick.equals(cellColorAfterClick);
   }
+  // --------was added by Marina(05.03) -------------
+  public WebElement waitAndFindWebElement(final By locator) {
+    Wait<WebDriver> wait = new FluentWait<WebDriver>(driver)
+            .withTimeout(30, TimeUnit.SECONDS)
+            .pollingEvery(5, TimeUnit.SECONDS)
+            .ignoring(NoSuchElementException.class);
+
+    WebElement el = wait.until(new Function<WebDriver, WebElement>() {
+      public WebElement apply(WebDriver driver) {
+        return driver.findElement(locator);
+      }
+    });
+
+    return  el;
+  };
+
+  // --------was added by Marina (05.03) -------------
+  public WebElement findWebElementInListByText(List<WebElement> listWebElements, String text){
+    if (listWebElements.size()==0) return null;
+    int i=0;
+    for(WebElement element : listWebElements) {
+      i++;
+      if(element.getText().toLowerCase().contains(text.toLowerCase())) {
+        return element;}
+
+    }
+    return null;
+  }
+  // --------was added by Marina (05.03) -------------
+  public int findNumberInListByText(String listLocator, String text){
+    List<WebElement> listWebElements = driver.findElements(By.xpath(listLocator));
+    if (listWebElements.size()==0) return -1;
+    int i=0;
+    for(WebElement element : listWebElements) {
+      i++;
+      if(element.getText().toLowerCase().contains(text.toLowerCase())) {
+        return i;}
+
+    }
+    return -1;
+  }
+
 }

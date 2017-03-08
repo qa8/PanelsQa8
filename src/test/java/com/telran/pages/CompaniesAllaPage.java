@@ -2,6 +2,7 @@ package com.telran.pages;
 
 import com.telran.LogLog4j;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -18,14 +19,14 @@ public class CompaniesAllaPage extends Page {
     public WebElement header;
 
 
-    @FindBy(xpath = "//*[@class='adminMenu']")
-    public WebElement adminMenuBlock;
+    @FindBy(xpath = "//div[@class='mdl-grid']")
+    public WebElement projectButtonText;
 
     @FindBy(xpath = "//h2[contains(text(),'Tadiran')]/../..//a")
     public WebElement tadiranProjectButton;
 
-    //@FindBy(xpath = "//*[@class='mdl-grid']/div[1]//a")
-    //public WebElement tadiranProjectButton;
+    @FindBy(xpath = "//div[@class='mdl-grid']//a")
+    public WebElement projectsButtons;
 
     @FindBy(xpath = "//select[@ng-model='selectedLanguage']")
     public WebElement selectLanguage;
@@ -46,22 +47,40 @@ public class CompaniesAllaPage extends Page {
         waitUntilIsLoadedCustomTime(tadiranProjectButton, 40);
     }
 
+    public void waitForCompaniesPageInLoaded2() {
+        Log.info("Waiting for companies page ");
+        waitUntilIsLoadedCustomTime(projectsButtons, 40);
+    }
+
+    public String getTextFromBloc() {
+        String w = projectButtonText.getText();
+        Log.info("Text found is " + w);
+        return w;
+    }
+
+    public boolean headerCompanyIsPresent(String companyName) {
+        Log.info("verify for company is present on the page");
+        return verifyTextBoolean(projectButtonText, companyName);
+    }
+
     public boolean isOnCompaniesPage() {
         Log.info("Checking that we are in companies page");
-        return exists(tadiranProjectButton);
+        return exists(companyLabel);
+
     }
 
     public void clickTadiranProjectButton() {
         Log.info("Clicking to tadiranProject button ");
         clickElement(tadiranProjectButton);
+        
     }
 
-    public void waitForTadiranProjectLoaded() {
-        waitUntilIsLoaded(tadiranProjectButton);
-    }
-   /* public boolean isOnCompanies(String company){
-        return exists(findProjectButtonbyName(company));}*/
+    public void clickProjectButtonByName(String w) {
+        Log.info("Clicking to tadiranProject button ");
+        String s = "//h2[contains (Text(),'" + w + "')]/../..//a";
+        driver.findElement(By.xpath(s)).click();
 
+    }
     public void selectEnglishLanguage() {
         Log.info("Selecting for english language");
         selectValueInDropdown(selectLanguage, "en");
@@ -74,13 +93,12 @@ public class CompaniesAllaPage extends Page {
 
     public boolean languageisEnglish() {
         Log.info("Checking for english language on the page");
-        // return companyLabel.getText() == "Companies";
-        return verifyTextBoolean(companyLabel, "Companies");
+        return isPureAscii("en", "Companies");
     }
 
     public boolean languageisHebrew() {
         Log.info("Checking for hebrew language on the page");
-        return verifyTextBoolean(companyLabel, "חברות");
+        return isPureAscii("he", "חברות");
 
     }
     /* public WebElement findProjectButtonbyName(String company) {

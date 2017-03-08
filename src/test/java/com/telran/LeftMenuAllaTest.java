@@ -26,6 +26,15 @@ public class LeftMenuAllaTest extends TestNgTestBase {
         companiesAllaPage.waitForCompaniesPageInLoaded();
     }
 
+    @Test(groups = {"regression"})
+    public void createCompanyIsSelectedTest() {
+        leftMenuAllaPage.clickOnTopMenuButton()
+                .waitForleftMenuInLoaded()
+                .clickManagementButton()
+                .clickCreateCompanyItemInDropdownManagement()
+                .waitForCreateCompanyPageIsDisplayed();
+        Assert.assertTrue(leftMenuAllaPage.isOnCreateCompanyPage());
+    }
 
     @Test(groups = {"regression"})
     public void viewReportsIsPresentedTest() {
@@ -44,13 +53,5 @@ public class LeftMenuAllaTest extends TestNgTestBase {
         Assert.assertTrue(loginAllaPage.isOnLoginPage());
     }
 
-    @Test(groups = {"regression"})
-    public void createCompanyIsSelectedTest() {
-        leftMenuAllaPage.clickOnTopMenuButton()
-                .waitForleftMenuInLoaded()
-                .clickManagementButton()
-                .clickCreateCompanyItemInDropdownManagement()
-                .waitForCreateCompanyPageIsDisplayed();
-        Assert.assertTrue(leftMenuAllaPage.isOnCreateCompanyPage());
-    }
+
 }
