@@ -28,9 +28,9 @@ public class LoginIakovTest extends TestNgTestBase {
         Assert.assertTrue(loginIakovPage.isOnLoginPage());
     }
 
-    @Test(groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "regression"}, dataProviderClass = DataProviders.class, dataProvider = "loadInvalidLoginFromFile")
     public void positivelogintest() {
-        driver.get("https://greengnome.github.io/panels/?#/login");
+        driver.get("https://greengnome.github.io/panels/");
         loginIakovPage.waitForLoginPageIsLoaded();
         loginIakovPage.fillLoginField("admin");
         loginIakovPage.fillPasswordField("12345");
