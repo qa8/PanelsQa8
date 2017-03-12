@@ -18,19 +18,19 @@ public class LoginIakovTest extends TestNgTestBase {
         companiesIakovPage = PageFactory.initElements(driver, CompaniesIakovPage.class);
     }
 
-    @Test
-    public void negativelogintest() {
-        driver.get("https://greengnome.github.io/panels/?#/login");
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "negativeAdmin")
+    public void negativelogintest(String login, String pass) {
+        driver.get("https://greengnome.github.io/panels");
         loginIakovPage.waitForLoginPageIsLoaded();
-        loginIakovPage.fillLoginField("sssss");
-        loginIakovPage.fillPasswordField(" ");
+        loginIakovPage.fillLoginField(login);
+        loginIakovPage.fillPasswordField(pass);
         loginIakovPage.pressLoginButton();
         Assert.assertTrue(loginIakovPage.isOnLoginPage());
     }
 
-    @Test(groups = {"smoke", "regression"})
+    @Test(groups = {"smoke", "regression"}, dataProviderClass = DataProviders.class, dataProvider = "negativeAdmin")
     public void positivelogintest() {
-        driver.get("https://greengnome.github.io/panels/?#/login");
+        driver.get("https://greengnome.github.io/panels/");
         loginIakovPage.waitForLoginPageIsLoaded();
         loginIakovPage.fillLoginField("admin");
         loginIakovPage.fillPasswordField("12345");
