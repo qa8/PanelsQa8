@@ -22,13 +22,13 @@ public class LoginAnnaTest extends TestNgTestBase {
         companiesAnna = PageFactory.initElements(driver, CompaniesAnna.class);
     }
 
-    @Test
-    public void negativeAllWrongLoginTest() {
+    @Test(dataProviderClass = DataProviders.class, dataProvider = "negativeAdmin")
+    public void negativeAllWrongLoginTest(String login, String pass) {
         driver.get(url);
         loginPage.waitForLoginPageLoaded();
 
-        loginPage.fillLoginField("aaaaaaa");
-        loginPage.fillPasswordField("   ");
+        loginPage.fillLoginField(login);
+        loginPage.fillPasswordField(pass);
 
         loginPage.pressLoginButton();
         loginPage.waitUntilIsLoadedCustomTime(loginPage.alertWrongLogin, 20);
