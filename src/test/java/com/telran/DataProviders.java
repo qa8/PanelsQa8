@@ -11,38 +11,9 @@ import java.util.List;
 import java.util.Random;
 
 public class DataProviders {
+    //Takes data from file
     @DataProvider
-    public static Iterator<Object[]> loadPositiveRegDoctor() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/positiveDoctorsReg.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-        in.close();
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> loadLogins() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/registeredLogins.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-        in.close();
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> loadInvalidLoginFromFile() throws IOException {
+    public static Iterator<Object[]> negativeAdmin() throws IOException {
         BufferedReader in = new BufferedReader(new InputStreamReader(
                 DataProviders.class.getResourceAsStream("/invalidLogin.data")));
 
@@ -52,122 +23,11 @@ public class DataProviders {
             userData.add(line.split(";"));
             line = in.readLine();
         }
-
         in.close();
-
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> SignUpAddress() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/webinar.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
         return userData.iterator();
     }
 
 
-    @DataProvider
-    public static Iterator<Object[]> loadGrafFromFile() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/graphs.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> loadProfileDataFromFile() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/profile2.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> loadTypesFromFile() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/progress.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> loadMedicineTypesFromFile() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/medicine.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> optionsFromFile() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/options.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> usersSimple() {
-        List<Object[]> data = new ArrayList<Object[]>();
-        data.add(new Object[]{"demo30", "1234"});
-        data.add(new Object[]{"demo29", "1234"});
-        return data.iterator();
-    }
 
     @DataProvider
     public static Iterator<Object[]> usersSimpleNeg() {
@@ -178,73 +38,6 @@ public class DataProviders {
     }
 
     //-------DataProvider for add employee-----//
-    @DataProvider
-    public static Iterator<Object[]> loadEmpDataFromFile() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/addEmp.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> loadDataForProfile() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/profiles.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> loadNegativeDataForProfile() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/profilesNegative.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
-        return userData.iterator();
-    }
-
-    @DataProvider
-    public static Iterator<Object[]> loadDataForMDRating() throws IOException {
-        BufferedReader in = new BufferedReader(new InputStreamReader(
-                DataProviders.class.getResourceAsStream("/mdrating.data")));
-
-        List<Object[]> userData = new ArrayList<Object[]>();
-        String line = in.readLine();
-        while (line != null) {
-            userData.add(line.split(";"));
-            line = in.readLine();
-        }
-
-        in.close();
-
-        return userData.iterator();
-    }
 
 
     @DataProvider
