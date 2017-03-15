@@ -12,7 +12,7 @@ public class LoginAnnaTest extends TestNgTestBase {
     public LoginAnnaPage loginPage;
     public CompaniesAnna companiesAnna;
 
-    private String url = "https://greengnome.github.io/panels/?#/login";
+    private String url = "https://greengnome.github.io/panels";
     private String rightUsername = "admin";
     private String rightPassword = "12345";
 
