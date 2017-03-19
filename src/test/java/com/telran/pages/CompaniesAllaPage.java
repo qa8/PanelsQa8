@@ -47,13 +47,14 @@ public class CompaniesAllaPage extends Page {
         waitUntilIsLoadedCustomTime(tadiranProjectButton, 40);
     }
 
-    public void waitForCompaniesPageInLoaded2() {
+    public CompaniesAllaPage waitForCompaniesPageInLoaded2() {
         Log.info("Waiting for companies page ");
         waitUntilIsLoadedCustomTime(projectsButtons, 40);
+        return this;
     }
 
-    public String getTextFromBloc() {
-        String w = projectButtonText.getText();
+    public String getTextFromCompanyLabel() {
+        String w = companyLabel.getText();
         Log.info("Text found is " + w);
         return w;
     }
@@ -77,28 +78,31 @@ public class CompaniesAllaPage extends Page {
 
     public void clickProjectButtonByName(String w) {
         Log.info("Clicking to tadiranProject button ");
-        String s = "//h2[contains (Text(),'" + w + "')]/../..//a";
+        String s = "//h2[contains(text(),'" + w + "')]/../..//a";
         driver.findElement(By.xpath(s)).click();
 
     }
-    public void selectEnglishLanguage() {
+
+    public CompaniesAllaPage selectEnglishLanguage() {
         Log.info("Selecting for english language");
         selectValueInDropdown(selectLanguage, "en");
+        return this;
     }
 
-    public void selecthebrewLanguage() {
+    public CompaniesAllaPage selecthebrewLanguage() {
         Log.info("Selecting for hebrew language");
         selectValueInDropdown(selectLanguage, "he");
+        return this;
     }
 
-    public boolean languageisEnglish() {
+    public boolean languageisEnglish(String d) {
         Log.info("Checking for english language on the page");
-        return isPureAscii("en", "Companies");
+        return isPureAscii("en", d);
     }
 
-    public boolean languageisHebrew() {
+    public boolean languageisHebrew(String p) {
         Log.info("Checking for hebrew language on the page");
-        return isPureAscii("he", "חברות");
+        return isPureAscii("he", p);
 
     }
     /* public WebElement findProjectButtonbyName(String company) {

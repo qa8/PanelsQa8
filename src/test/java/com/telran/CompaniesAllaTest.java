@@ -29,9 +29,9 @@ public class CompaniesAllaTest extends TestNgTestBase {
   public void tadiranProjectButtonTest() {
     //companiesAllaPage.getTextFromBloc();
     companiesAllaPage.headerCompanyIsPresent("Tadiran");
-    companiesAllaPage.clickTadiranProjectButton();
+    companiesAllaPage.clickProjectButtonByName("Tadiran");
     tadiranProjectAllaPage.waitForProjectPageIsLoaded();
-    Assert.assertTrue(tadiranProjectAllaPage.isOnTadiranProjectPage());
+    Assert.assertTrue(tadiranProjectAllaPage.isOnTadiranProjectPage1("CONDITIONER"));
   }
 
   @Test(groups = {"regression"})
@@ -45,14 +45,15 @@ public class CompaniesAllaTest extends TestNgTestBase {
 
   @Test(groups = {"regression"})
   public void selectEnglishLanguageTest() {
-    companiesAllaPage.selectEnglishLanguage();
-    Assert.assertTrue(companiesAllaPage.languageisEnglish());
+    companiesAllaPage.selectEnglishLanguage()
+            .waitForCompaniesPageInLoaded();
+    Assert.assertTrue(companiesAllaPage.languageisEnglish(companiesAllaPage.getTextFromCompanyLabel()));
   }
 
   @Test(groups = {"regression"})
   public void selectHebrewLanguageTest() {
-    companiesAllaPage.selecthebrewLanguage();
-    companiesAllaPage.waitForCompaniesPageInLoaded();
-    Assert.assertTrue(companiesAllaPage.languageisHebrew());
+    companiesAllaPage.selecthebrewLanguage()
+            .waitForCompaniesPageInLoaded();
+    Assert.assertTrue(companiesAllaPage.languageisHebrew(companiesAllaPage.getTextFromCompanyLabel()));
   }
 }
