@@ -65,13 +65,13 @@ public class CompaniesIakovTest extends TestNgTestBase {
     @Test(groups = {"regression"})
     public void selectEnglishLanguageTest() {
         companiesAllaPage.selectEnglishLanguage();
-        Assert.assertTrue(companiesAllaPage.languageisEnglish());
+        Assert.assertTrue(companiesAllaPage.languageisEnglish(companiesAllaPage.getTextFromCompanyLabel()));
     }
 
     @Test(groups = {"regression"})
     public void selectHebrewLanguageTest() {
         companiesAllaPage.selecthebrewLanguage();
         companiesAllaPage.waitForCompaniesPageInLoaded();
-        Assert.assertTrue(companiesAllaPage.languageisHebrew());
+        Assert.assertTrue(companiesAllaPage.languageisHebrew(companiesAllaPage.getTextFromCompanyLabel()));
     }
 }

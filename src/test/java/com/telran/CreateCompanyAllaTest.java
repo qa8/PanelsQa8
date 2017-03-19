@@ -45,6 +45,6 @@ public class CreateCompanyAllaTest extends TestNgTestBase {
                 .clickAddCompanyButton();
         companiesAllaPage.waitForCompaniesPageInLoaded();
         companiesAllaPage.isOnCompaniesPage();
-        companiesAllaPage.getTextFromBloc();
+        companiesAllaPage.getTextFromCompanyLabel();
     }
 }
