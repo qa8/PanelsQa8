@@ -31,6 +31,10 @@ public class CompaniesAllaPage extends Page {
     @FindBy(xpath = "//select[@ng-model='selectedLanguage']")
     public WebElement selectLanguage;
 
+    //for Hebrew
+    @FindBy(xpath = "//span[1][@class='mdl-layout-title ng-binding'][text()='חברות']")
+    public WebElement companyLabelHebrew;
+    //for English
     @FindBy(xpath = "//span[1][@class='mdl-layout-title ng-binding']")
     public WebElement companyLabel;
 
@@ -47,18 +51,25 @@ public class CompaniesAllaPage extends Page {
         waitUntilIsLoadedCustomTime(tadiranProjectButton, 40);
     }
 
-    public CompaniesAllaPage waitForCompaniesPageInLoaded2() {
+    public CompaniesAllaPage waitForCompanyLabelHebrew() {
         Log.info("Waiting for companies page ");
-        waitUntilIsLoadedCustomTime(projectsButtons, 40);
+        waitUntilIsLoaded(companyLabelHebrew);
         return this;
     }
 
-    public String getTextFromCompanyLabel() {
-        String w = companyLabel.getText();
+    //for Hebrew
+    public String getTextFromCompanyLabelHebrew() {
+        String w = companyLabelHebrew.getText();
         Log.info("Text found is " + w);
         return w;
     }
 
+    //for English
+    public String getTextFromCompanyLabel() {
+        String u = companyLabel.getText();
+        Log.info("Text found is " + u);
+        return u;
+    }
     public boolean headerCompanyIsPresent(String companyName) {
         Log.info("verify for company is present on the page");
         return verifyTextBoolean(projectButtonText, companyName);
@@ -82,7 +93,6 @@ public class CompaniesAllaPage extends Page {
         driver.findElement(By.xpath(s)).click();
 
     }
-
     public CompaniesAllaPage selectEnglishLanguage() {
         Log.info("Selecting for english language");
         selectValueInDropdown(selectLanguage, "en");

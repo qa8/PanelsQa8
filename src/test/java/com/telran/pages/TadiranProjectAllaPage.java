@@ -42,7 +42,6 @@ public class TadiranProjectAllaPage extends Page {
         Log.info("Checking that we are on tadiran project page");
         return exists(tadiranProjectHeader);
     }
-
     public boolean isOnTadiranProjectPage1(String w) {
         Log.info("Checking that we are on tadiran project page");
         String s = "//h2[contains(text(),'" + w + "')]";
