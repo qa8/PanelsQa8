@@ -55,7 +55,7 @@ public class LoginAllaTest extends TestNgTestBase {
     Assert.assertTrue(companiesAllaPage.isOnCompaniesPage());
   }
 
-  @Test(dataProviderClass = DataProvidersTadiranAlla.class, dataProvider = "positiveLogin")
+  /*@Test(dataProviderClass = DataProvidersTadiranAlla.class, dataProvider = "positiveLogin")
   public void positiveLoginTest2(String login, String pass) {
     driver.get(URL_LOG);
     loginAllaPage.waitForLoginPageIsLoaded()
@@ -75,5 +75,5 @@ public class LoginAllaTest extends TestNgTestBase {
             .clickLoginButton();
     loginAllaPage.waitForLoginPageIsLoaded();
     Assert.assertTrue(loginAllaPage.isOnLoginPage());
-  }
+  }*/
 }

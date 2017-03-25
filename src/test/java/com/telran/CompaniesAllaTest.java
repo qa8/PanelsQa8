@@ -22,7 +22,7 @@ public class CompaniesAllaTest extends TestNgTestBase {
     loginAllaPage = PageFactory.initElements(driver, LoginAllaPage.class);
     tadiranProjectAllaPage = PageFactory.initElements(driver, TadiranProjectAllaPage.class);
     loginAllaPage.login(ADM_LOG, ADM_PSW);
-    companiesAllaPage.waitForCompaniesPageInLoaded2();
+    companiesAllaPage.waitForCompaniesPageInLoaded();
     }
 
   @Test(groups = {"regression"})
@@ -53,7 +53,7 @@ public class CompaniesAllaTest extends TestNgTestBase {
   @Test(groups = {"regression"})
   public void selectHebrewLanguageTest() {
     companiesAllaPage.selecthebrewLanguage()
-            .waitForCompaniesPageInLoaded();
-    Assert.assertTrue(companiesAllaPage.languageisHebrew(companiesAllaPage.getTextFromCompanyLabel()));
+            .waitForCompanyLabelHebrew();
+    Assert.assertTrue(companiesAllaPage.languageisHebrew(companiesAllaPage.getTextFromCompanyLabelHebrew()));
   }
 }
