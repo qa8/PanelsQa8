@@ -4,12 +4,14 @@ import com.telran.pages.CompaniesMarinaPage;
 import com.telran.pages.HeaderMarinaPage;
 import com.telran.pages.LoginMarinaPage;
 import com.telran.pages.NavigationMarinaPage;
+import org.apache.log4j.Logger;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 
 public class CompaniesMarinaTest extends TestNgTestBase {
+    private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
     private static final String URL_LINK = "https://greengnome.github.io/panels/?#/login";
     private static final String PSW_ADM = "12345";
@@ -21,7 +23,7 @@ public class CompaniesMarinaTest extends TestNgTestBase {
     private NavigationMarinaPage navigationMarinaPage;
     private HeaderMarinaPage headerMarinaPage;
 
-    @BeforeMethod
+    @BeforeMethod(alwaysRun = true)
     public void initPageObjects() {
         loginMarinaPage = PageFactory.initElements(driver, LoginMarinaPage.class);
         companiesMarinaPage = PageFactory.initElements(driver, CompaniesMarinaPage.class);
@@ -37,9 +39,9 @@ public class CompaniesMarinaTest extends TestNgTestBase {
         headerMarinaPage.waitHeaderIsLoaded();
     }
 
-    @Test
+    @Test(groups = {"smoke", "regression"})
     public void positiveCompaniesPageLoading() {
-
+        Log.info("Test: positiveCompaniesPageLoading");
         companiesMarinaPage.waitForTadiranProjectLoaded();
         //companiesMarinaPage.waitForCompanyLoaded("Tadiran"); - it doesn't work (with dynamic element)
         //Verification: All companies are loaded
@@ -48,43 +50,45 @@ public class CompaniesMarinaTest extends TestNgTestBase {
             //System.out.println(ARRAY_COMPANIES[i]);
             if (companiesMarinaPage.isCompanyOnCompaniesPage(ARRAY_COMPANIES[i])) count++;
         }
-        Assert.assertTrue(ARRAY_COMPANIES.length==count);
+        Assert.assertTrue(ARRAY_COMPANIES.length==count, "Not passed. Not all companies are loaded.");
     }
 
-    @Test
+    @Test(groups =  "regression")
     public void positiveCompaniesPageLSProjectButtonsonHebrew() {
-
+        Log.info("----Test: positiveCompaniesPageLSProjectButtonsonHebrew");
         headerMarinaPage.chooseHebrewLanguage();
         int count=0;
         for(int i=0; i<ARRAY_COMPANIES.length;i++){
             //System.out.println(ARRAY_COMPANIES[i]);
             if (companiesMarinaPage.isCompanyProjectButtonTextHebrew(ARRAY_COMPANIES[i])) count++;
         }
-        Assert.assertTrue(ARRAY_COMPANIES.length==count);
+        Assert.assertTrue(ARRAY_COMPANIES.length==count, "Not passed. Exists text (on project button) that is not on Hebrew.");
     }
 
-    @Test
+    @Test(groups = "regression")
     public void positiveCompaniesPageLSProjectButtonsonEnglish() {
-
+        Log.info("----Test: positiveCompaniesPageLSProjectButtonsonEnglish");
         headerMarinaPage.chooseEnglishLanguage();
         int count=0;
         for(int i=0; i<ARRAY_COMPANIES.length;i++){
             //System.out.println(ARRAY_COMPANIES[i]);
             if (companiesMarinaPage.isCompanyProjectButtonTextEnglish(ARRAY_COMPANIES[i])) count++;
         }
-        Assert.assertTrue(ARRAY_COMPANIES.length==count);
+        Assert.assertTrue(ARRAY_COMPANIES.length==count,"Not passed. Exists text (on project button) that is not on English." );
     }
 
-    // It verifies that ManagementList on Navigation Page exits on English
-    @Test
+    // It verifies navigation menu on English
+    @Test(groups =  "regression")
     public void positiveCompaniesPageLSNavigationMenuManagementListEnglish() {
+        Log.info("----Test: positiveCompaniesPageLSNavigationMenuManagementListEnglish");
         headerMarinaPage.chooseEnglishLanguage();
         this.languageMenuNavigationVerification("En");
     }
 
-    // It verifies that ManagementList on Navigation Page exits on Hebrew
-    @Test
+    // It verifies navigation menu on Hebrew
+    @Test(groups =  "regression")
     public void positiveCompaniesPageLSNavigationMenuManagementListHebrew() {
+        Log.info("----Test: positiveCompaniesPageLSNavigationMenuManagementListHebrew");
         headerMarinaPage.chooseHebrewLanguage();
         this.languageMenuNavigationVerification("He");
     }
@@ -116,7 +120,7 @@ public class CompaniesMarinaTest extends TestNgTestBase {
         if (navigationMarinaPage.isExportReportsOnLanguage(language)) count++;
         navigationMarinaPage.clickCloseMenuReports();
         if (navigationMarinaPage.isLogoutButtonOnLanguage(language))count++;
-        Assert.assertTrue(count==12);
+        Assert.assertTrue(count==12, "Not passed. Not all menu elements on "+language);
     }
 
 }
