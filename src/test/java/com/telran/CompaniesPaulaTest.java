@@ -1,10 +1,6 @@
 package com.telran;
 
-import com.telran.pages.CompaniesPaulaPage;
-import com.telran.pages.LoginPaulaPage;
-import com.telran.pages.TadiranProjectAllaPage;
 import org.apache.log4j.Logger;
-import org.openqa.selenium.support.PageFactory;
 import org.testng.Assert;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
@@ -13,17 +9,11 @@ public class CompaniesPaulaTest extends TestNgTestBase {
     private static final String ADM_LOG = "admin";
     private static final String ADM_PSW = "12345";
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
-    public LoginPaulaPage loginPaulaPage;
-    public TadiranProjectAllaPage tadiranProjectAllaPage;
-    public CompaniesPaulaPage companiesPaulaPage;
 
 
     @BeforeMethod
     public void initPageObjects() {
-        companiesPaulaPage = PageFactory.initElements(driver, CompaniesPaulaPage.class);
-        loginPaulaPage = PageFactory.initElements(driver, LoginPaulaPage.class);
-        tadiranProjectAllaPage = PageFactory.initElements(driver, TadiranProjectAllaPage.class);
-        companiesPaulaPage = PageFactory.initElements(driver, CompaniesPaulaPage.class);
+
         loginPaulaPage.login(ADM_LOG, ADM_PSW);
         companiesPaulaPage.waitForCompaniesPageInLoaded();
     }

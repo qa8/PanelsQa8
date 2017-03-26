@@ -94,6 +94,6 @@ public class LoginPaulaPage extends Page {
   }
 
   public void openloginpage() {
-    driver.get("");
+    driver.get("https://greengnome.github.io/panels");
   }
 }

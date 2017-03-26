@@ -27,6 +27,7 @@ public class CompaniesAllaTest extends TestNgTestBase {
 
   @Test(groups = {"regression"})
   public void tadiranProjectButtonTest() {
+
     //companiesAllaPage.getTextFromBloc();
     companiesAllaPage.headerCompanyIsPresent("Tadiran");
     companiesAllaPage.clickProjectButtonByName("Tadiran");
