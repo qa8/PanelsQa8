@@ -15,7 +15,7 @@ import ru.stqa.selenium.factory.WebDriverPool;
 public class LoginMarinaTest extends TestNgTestBase {
     private static Logger Log = Logger.getLogger(LogLog4j.class.getName());
 
-    private static final String URL_LINK = "https://greengnome.github.io/panels/?#/login";
+    private static final String URL_LINK = "https://greengnome.github.io/panels/";
     private static final String PSW_ADM = "12345";
     private static final String LOGIN_ADM ="Admin" ;
     private static final String NAME_COMPANY ="Tadiran" ;
@@ -41,7 +41,8 @@ public class LoginMarinaTest extends TestNgTestBase {
         driver = WebDriverPool.DEFAULT.getDriver(gridHubUrl, capabilities);
     }
 
-    @Test(groups = {"smoke", "regression"},dataProviderClass = DataProviders.class, dataProvider = "invalidLogin")
+    @Test(groups = {"smoke", "regression"},dataProviderClass = DataProviders.class, dataProvider = "negativeAdmin")
+    //@Test(dataProviderClass = DataProviders.class, dataProvider = "negativeAdmin")
     public void negativeLoginTest(String login, String pass) {
         Log.info("----Test: negativeLoginTest");
         loginMarinaPage.fillLoginField(login)

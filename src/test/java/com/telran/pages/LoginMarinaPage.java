@@ -65,6 +65,6 @@ public class LoginMarinaPage extends Page {
 
     public boolean isOnLoginPage(){
         Log.info("Verification: Is on login page (login header exists)");
-        return exists(pleaseLogInHeader);
+        return exists(passwordField);
     }
 }
