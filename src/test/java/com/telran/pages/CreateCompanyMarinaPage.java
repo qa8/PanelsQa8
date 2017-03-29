@@ -3,10 +3,16 @@ package com.telran.pages;
 
 import com.telran.LogLog4j;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 
 public class CreateCompanyMarinaPage extends  Page {
@@ -15,6 +21,19 @@ public class CreateCompanyMarinaPage extends  Page {
 
 
     // it's better to use array of companies names, instead of nameCompany in constructor
+    @FindBy(id = "sample1")
+    public WebElement companyName;
+
+    //@FindBy(how = How.TAG_NAME, using = "h1")
+   // public WebElement header;
+    @FindBy(id = "sample2")
+    public WebElement companyOwnerName;
+    @FindBy(id = "sample3")
+    public WebElement phoneNumber;
+    @FindBy(id = "uploadFile")
+    public WebElement uploadFile;
+    @FindBy(id = "uploadBtn")
+    public WebElement uploadLogoButton;
 
     public CreateCompanyMarinaPage(WebDriver driver) {
         super(driver);
@@ -22,25 +41,6 @@ public class CreateCompanyMarinaPage extends  Page {
         //this.nameCompany = nameCompany;
         //this.projectButtonCompany= driver.findElement(By.xpath(".//h2[contains(Text(),"+nameCompany+")]/../..//a)"));
     }
-
-    //@FindBy(how = How.TAG_NAME, using = "h1")
-   // public WebElement header;
-
-    @FindBy(id = "sample1")
-    public WebElement companyName;
-
-    @FindBy(id = "sample2")
-    public WebElement companyOwnerName;
-
-    @FindBy(id = "sample3")
-    public WebElement phoneNumber;
-
-    @FindBy(id = "uploadFile")
-    public WebElement uploadFile;
-
-    @FindBy(id = "uploadBtn")
-    public WebElement uploadLogoButton;
-
 
     //method
     public CreateCompanyMarinaPage fillCompanyName(String text) {
@@ -59,9 +59,18 @@ public class CreateCompanyMarinaPage extends  Page {
         return this;
     }
     //????????????
-    public CreateCompanyMarinaPage UploadLogo(String logoFile) {
+    public CreateCompanyMarinaPage UploadLogo(String logoFile) throws InterruptedException {
         Log.info("Attaching logo: logoFile");
         uploadLogoButton.click();
+        Thread.sleep(1000);
+        String myString = "C\\QATools\\logo.png";
+        StringSelection stringSelection = new StringSelection(myString);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(stringSelection, null);
+
+        Actions action = new Actions(driver);
+        action.keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).perform();
+        action.sendKeys(Keys.RETURN).perform();
         //????
         //this.setElementText(phoneNumber, text);
         return this;

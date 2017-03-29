@@ -2,11 +2,17 @@ package com.telran.pages;
 
 import com.telran.LogLog4j;
 import org.apache.log4j.Logger;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
 import org.openqa.selenium.support.PageFactory;
+
+import java.awt.*;
+import java.awt.datatransfer.Clipboard;
+import java.awt.datatransfer.StringSelection;
 
 /**
  * Created by Andrey on 01.03.2017.
@@ -28,6 +34,8 @@ public class CreateCompanyAllaPage extends Page {
 
     @FindBy(xpath = "//form/button")
     public WebElement addCompanyButton;
+    @FindBy(id = "uploadBtn")
+    public WebElement uploadLogoButton;
 
     public CreateCompanyAllaPage(WebDriver driver) {
         super(driver);
@@ -62,4 +70,20 @@ public class CreateCompanyAllaPage extends Page {
         return this;
     }
 
+    public CreateCompanyAllaPage UploadLogo(String logoFile) throws InterruptedException {
+        Log.info("Attaching logo: logoFile");
+        uploadLogoButton.click();
+        Thread.sleep(1000);
+
+        StringSelection stringSelection = new StringSelection(logoFile);
+        Clipboard clpbrd = Toolkit.getDefaultToolkit().getSystemClipboard();
+        clpbrd.setContents(stringSelection, null);
+
+        Actions action = new Actions(driver);
+        action.keyDown(Keys.CONTROL).sendKeys("v").keyUp(Keys.CONTROL).perform();
+        action.sendKeys(Keys.RETURN).perform();
+        //????
+        //this.setElementText(phoneNumber, text);
+        return this;
+    }
 }

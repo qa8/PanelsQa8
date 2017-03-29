@@ -14,6 +14,7 @@ import org.testng.annotations.Test;
 public class CreateCompanyAllaTest extends TestNgTestBase {
     private static final String ADM_LOG = "admin";
     private static final String ADM_PSW = "12345";
+    private static String myString = "C\\QATools\\logo.png";
 
     public CompaniesAllaPage companiesAllaPage;
     public LoginAllaPage loginAllaPage;
@@ -32,7 +33,7 @@ public class CreateCompanyAllaTest extends TestNgTestBase {
     }
 
     @Test(groups = {"regression"})
-    public void addCompanyTest() {
+    public void addCompanyTest() throws InterruptedException {
         leftMenuAllaPage.clickOnTopMenuButton()
                 .clickManagementButton()
                 .waitForleftMenuInLoaded()
@@ -46,5 +47,8 @@ public class CreateCompanyAllaTest extends TestNgTestBase {
         companiesAllaPage.waitForCompaniesPageInLoaded();
         companiesAllaPage.isOnCompaniesPage();
         companiesAllaPage.getTextFromCompanyLabel();
+        createCompanyAllaPage.UploadLogo(myString);
+
+
     }
 }
