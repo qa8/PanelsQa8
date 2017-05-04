@@ -30,7 +30,7 @@ public class CompaniesIakovTest extends TestNgTestBase {
         companiesAllaPage.waitForCompaniesPageInLoaded();
     }
 
-    @Test(groups = {"junk"})
+    @Test(groups = {"RegressionIakov"})
     public void getTextFromBlock() {
         companiesAllaPage.clickTadiranProjectButton();
         tadiranProjectAllaPage.waitForProjectPageIsLoaded();
@@ -46,7 +46,7 @@ public class CompaniesIakovTest extends TestNgTestBase {
         Log.info("Success! Name are matching");
     }
 
-    @Test(groups = {"regression"})
+    @Test(groups = {"RegressionIakov"})
     public void tadiranProjectButtonTest() {
         companiesAllaPage.clickTadiranProjectButton();
         tadiranProjectAllaPage.waitForProjectPageIsLoaded();

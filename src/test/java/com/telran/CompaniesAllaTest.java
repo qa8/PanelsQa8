@@ -25,7 +25,7 @@ public class CompaniesAllaTest extends TestNgTestBase {
     companiesAllaPage.waitForCompaniesPageInLoaded();
     }
 
-  @Test(groups = {"regression"})
+  @Test(groups = {"inProgress", "Smoke"})
   public void tadiranProjectButtonTest() {
 
     //companiesAllaPage.getTextFromBloc();
